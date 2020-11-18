@@ -1,0 +1,105 @@
+<!-- N2PP -->
+{% if user.necs_practiceid %}
+    {% assign practice = entities.account[user.necs_practiceid.Id] %}
+    {% if practice.necs_approverid.Id == user.contactid %}
+        {% assign user_is_approver = true %}
+    {% endif %}
+{% endif %}
+
+<!-- ARRS -->
+{% if user.necs_ccgid %}
+    {% assign ccg = entities.account[user.necs_ccgid.Id] %}
+    {% if ccg.necs_approverid.Id == user.contactid %}
+        {% assign user_is_approver = true %}
+    {% endif %}
+{% endif %}
+
+{% assign showchildren = showchildren | default: true %}
+{% assign showdescriptions = showdescriptions | default: false %}
+
+{% if showchildren and page.children.size > 0 %}
+
+<fieldset class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+        Forms
+    </legend>
+
+    {% if showdescriptions %}
+      <ul class="list-group">
+        {% for node in page.children %}
+
+            {% if node.title contains 'Review' %}
+              {% assign hasReviewItems = true %}
+            {% else %}
+              <li class="list-group-item">
+                <h4 class="list-group-item-heading">
+                  <a href="{{ node.url | escape }}">{{ node.title | escape }}</a>
+                </h4>
+                <div class="list-group-item-text">
+                  {% case node.entity.logical_name %}
+                  {% when 'adx_blog' or 'adx_event' or 'adx_webfile' or 'adx_webpage' %}
+                    {{ node.entity.adx_summary}}
+                  {% else %}
+                    {{ node.entity.adx_description}}
+                  {% endcase %}
+                </div>
+              </li>
+            {% endif %}
+
+        {% endfor %}
+      </ul>
+    {% else %}
+      <div class="list-group">
+        {% for node in page.children %}
+          <a href="{{ node.url | escape }}" class="list-group-item">{{ node.title | escape }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+</fieldset>
+
+
+    <!-- If user is a practice approver -->
+    {% if user_is_approver and hasReviewItems == true %}
+
+    <fieldset class="nhsuk-fieldset">
+        <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+            Forms To Approve
+        </legend>
+
+    {% if showdescriptions %}
+      <ul class="list-group">
+        {% for node in page.children %}
+
+            {% if node.title contains 'Review' %}
+              <li class="list-group-item">
+                <h4 class="list-group-item-heading">
+                  <a href="{{ node.url | escape }}">{{ node.title | escape }}</a>
+                </h4>
+                <div class="list-group-item-text">
+                  {% case node.entity.logical_name %}
+                  {% when 'adx_blog' or 'adx_event' or 'adx_webfile' or 'adx_webpage' %}
+                    {{ node.entity.adx_summary}}
+                  {% else %}
+                    {{ node.entity.adx_description}}
+                  {% endcase %}
+                </div>
+              </li>
+            {% endif %}
+
+        {% endfor %}
+      </ul>
+    {% else %}
+      <div class="list-group">
+        {% for node in page.children %}
+          <a href="{{ node.url | escape }}" class="list-group-item">{{ node.title | escape }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+</fieldset>
+
+    {% endif %}
+
+
+{% endif %}

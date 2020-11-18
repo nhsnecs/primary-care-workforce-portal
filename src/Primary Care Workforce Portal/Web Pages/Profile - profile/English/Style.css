@@ -1,0 +1,12 @@
+div.col-md-4 {
+    display: none;
+}
+h1 {
+    margin-bottom: 0 !important;
+}
+div.page-heading {
+    padding-bottom: 0 !important;
+}
+div.page-header {
+    display: none;
+}

@@ -1,0 +1,9 @@
+<script>
+  $(document).ready(function() {
+
+    $("table[role='presentation']").each(function(index) {
+        $(this).prev().find('.nhsuk-details__text').append(this);
+    });
+
+  });
+</script>

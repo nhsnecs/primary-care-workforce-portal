@@ -1,0 +1,10 @@
+<script>
+  if (window.jQuery) {
+    $(document).ready(function() {
+      var firstOfMonth = dayjs().startOf('month').format("DD/MM/YYYY");
+      $("#necs_claimmonth_datepicker_description").val(firstOfMonth);
+      $("#necs_submittedbyid_name").val(userName);
+      $("#necs_pcnodscode").val(necs_ccgodscode);
+    });
+  }
+</script>

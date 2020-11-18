@@ -1,0 +1,370 @@
+
+.nhsuk-card {
+    margin-bottom: 24px;
+    background: #fff;
+    border: 1px solid #d8dde0;
+    position: relative;
+    width: 100%
+}
+
+@media (min-width: 40.0625em) {
+    .nhsuk-card {
+        margin-bottom:32px
+    }
+}
+
+.nhsuk-card__img {
+    display: block;
+    width: 100%
+}
+
+@media print {
+    .nhsuk-card__img {
+        display: none
+    }
+}
+
+.nhsuk-card__content {
+    padding: 24px;
+    position: relative
+}
+
+.nhsuk-card__content>*:first-child {
+    margin-top: 0
+}
+
+.nhsuk-card__content>*:last-child {
+    margin-bottom: 0
+}
+
+@media (min-width: 40.0625em) {
+    .nhsuk-card__content {
+        padding:32px
+    }
+}
+
+.nhsuk-card__heading,.nhsuk-card__metadata,.nhsuk-card__description {
+    margin-bottom: 16px
+}
+
+.nhsuk-card--clickable {
+    border-bottom-width: 4px
+}
+
+.nhsuk-card--clickable:hover,.nhsuk-card--clickable:active {
+    cursor: pointer
+}
+
+.nhsuk-card--clickable:hover .nhsuk-card__heading a,.nhsuk-card--clickable:hover .nhsuk-card__link,.nhsuk-card--clickable:active .nhsuk-card__heading a,.nhsuk-card--clickable:active .nhsuk-card__link {
+    color: #7C2855;
+    text-decoration: none
+}
+
+.nhsuk-card--clickable:hover .nhsuk-card__heading a:focus,.nhsuk-card--clickable:hover .nhsuk-card__link:focus,.nhsuk-card--clickable:active .nhsuk-card__heading a:focus,.nhsuk-card--clickable:active .nhsuk-card__link:focus {
+    color: #212b32
+}
+
+.nhsuk-card--clickable:hover {
+    border-color: #aeb7bd
+}
+
+.nhsuk-card--clickable:active {
+    border-color: #aeb7bd;
+    bottom: -1px
+}
+
+.nhsuk-card__video {
+    height: 0;
+    max-width: 100%;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative
+}
+
+.nhsuk-card__video iframe,.nhsuk-card__video object,.nhsuk-card__video embed {
+    border: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%
+}
+
+.nhsuk-card--feature {
+    margin-top: 40px
+}
+
+@media (min-width: 40.0625em) {
+    .nhsuk-card--feature {
+        margin-top:48px
+    }
+}
+
+.nhsuk-card--feature+.nhsuk-card--feature {
+    margin-top: 32px
+}
+
+@media (min-width: 40.0625em) {
+    .nhsuk-card--feature+.nhsuk-card--feature {
+        margin-top:40px
+    }
+}
+
+.nhsuk-card__heading--feature {
+    font-weight: 600;
+    font-size: 20px;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    background: #005eb8;
+    color: #fff;
+    display: inline-block;
+    left: -1px;
+    padding: 8px 16px;
+    position: absolute;
+    top: -16px
+}
+
+@media (min-width: 40.0625em) {
+    .nhsuk-card__heading--feature {
+        font-size:24px;
+        font-size: 1.5rem;
+        line-height: 1.33333
+    }
+}
+
+@media print {
+    .nhsuk-card__heading--feature {
+        font-size: 18pt;
+        line-height: 1.15
+    }
+}
+
+@media (min-width: 48.0625em) {
+    .nhsuk-card__heading--feature {
+        padding:8px 24px
+    }
+}
+
+.nhsuk-card__content--feature {
+    padding-top: 40px
+}
+
+@media (min-width: 40.0625em) {
+    .nhsuk-card__content--feature {
+        padding-top:48px
+    }
+}
+
+.nhsuk-card-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+    padding: 0
+}
+
+@media (max-width: 48.0525em) {
+    .nhsuk-card-group {
+        margin-bottom:40px
+    }
+}
+
+.nhsuk-card-group__item {
+    display: flex;
+    list-style-type: none;
+    margin-bottom: 0
+}
+
+@media (max-width: 48.0525em) {
+    .nhsuk-card-group__item {
+        flex:0 0 100%
+    }
+}
+
+.nhsuk-card-group__item .nhsuk-card {
+    margin-bottom: 32px
+}
+
+@media (max-width: 48.0525em) {
+    .nhsuk-card-group__item .nhsuk-card {
+        margin-bottom:16px
+    }
+
+    .nhsuk-card-group__item:last-child .nhsuk-card {
+        margin-bottom: 0
+    }
+}
+
+.nhsuk-card-group__item .nhsuk-card--feature {
+    margin-top: 0
+}
+
+.nhsuk-card-group--list .nhsuk-card-group__item:not(:last-child) .nhsuk-card {
+    border-bottom-width: 0;
+    margin-bottom: 0
+}
+
+@media (max-width: 48.0525em) {
+    .nhsuk-card-full-width {
+        margin-left:-16px;
+        margin-right: -16px
+    }
+
+    .nhsuk-card-full-width .nhsuk-card-group__item {
+        padding: 0
+    }
+
+    .nhsuk-card-full-width .nhsuk-card {
+        border-left-width: 0;
+        border-right-width: 0
+    }
+}
+
+.nhsuk-card--app {
+    border-bottom-width: 1px
+}
+
+.nhsuk-card--app .nhsuk-card__content {
+    padding: 16px
+}
+
+.nhsuk-card--app .nhsuk-card__content>*:first-child {
+    margin-top: 0
+}
+
+.nhsuk-card--app .nhsuk-card__content>*:last-child {
+    margin-bottom: 0
+}
+
+@media (min-width: 40.0625em) {
+    .nhsuk-card--app .nhsuk-card__content {
+        padding:24px
+    }
+}
+
+.nhsuk-card--app .nhsuk-card__heading {
+    margin-bottom: 8px
+}
+
+@media (min-width: 40.0625em) {
+    .nhsuk-card--app .nhsuk-card__heading {
+        margin-bottom:16px
+    }
+}
+
+.nhsuk-card--icon {
+    background-image: url("data:image/svg+xml,%3Csvg class='nhsuk-icon nhsuk-icon__chevron-right' xmlns='http://www.w3.org/2000/svg' fill='%23768692' height='40' width='40' viewBox='0 0 24 24' aria-hidden='true'%3E%3Cpath d='M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z'%3E%3C/path%3E%3C/svg%3E");
+    background-position: right 8px top 50%;
+    background-repeat: no-repeat
+}
+
+@media (max-width: 48.0525em) {
+    .nhsuk-card--icon {
+        background-position:right 4px top 50%
+    }
+}
+
+.nhsuk-card--icon:hover {
+    background-image: url("data:image/svg+xml,%3Csvg class='nhsuk-icon nhsuk-icon__chevron-right' xmlns='http://www.w3.org/2000/svg' fill='%237C2855' height='40' width='40' viewBox='0 0 24 24' aria-hidden='true'%3E%3Cpath d='M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z'%3E%3C/path%3E%3C/svg%3E")
+}
+
+.nhsuk-card--icon a {
+    text-decoration: none
+}
+
+.nhsuk-card--icon .nhsuk-card__content {
+    padding-right: 48px
+}
+
+@media (min-width: 40.0625em) {
+    .nhsuk-card--icon .nhsuk-card__content {
+        padding-right:56px
+    }
+}
+
+.nhsuk-card--icon.nhsuk-card--clickable:hover a,.nhsuk-card--icon.nhsuk-card--clickable:active a {
+    text-decoration: underline
+}
+
+.nhsuk-card--icon.nhsuk-card--clickable:hover a:hover,.nhsuk-card--icon.nhsuk-card--clickable:active a:hover {
+    text-decoration: underline
+}
+
+.nhsuk-card--icon.nhsuk-card--clickable:hover a:focus,.nhsuk-card--icon.nhsuk-card--clickable:active a:focus {
+    text-decoration: none
+}
+
+.nhsuk-card--grey {
+    background-color: #f0f4f5
+}
+
+.nhsuk-card--green {
+    background-color: #007235;
+    border-color: #00401e
+}
+
+.nhsuk-card--green.nhsuk-card--clickable:hover {
+    background-color: #005929;
+    border-color: #00190c
+}
+
+.nhsuk-card--green.nhsuk-card--clickable:hover a {
+    color: #fff
+}
+
+.nhsuk-card--blue {
+    background-color: #0055a6;
+    border-color: #002f5c
+}
+
+.nhsuk-card--blue.nhsuk-card--clickable:hover {
+    background-color: #004281;
+    border-color: #001325
+}
+
+.nhsuk-card--blue.nhsuk-card--clickable:hover a {
+    color: #fff
+}
+
+.nhsuk-card--green,.nhsuk-card--blue {
+    color: #fff
+}
+
+.nhsuk-card--green .nhsuk-card__caption,.nhsuk-card--blue .nhsuk-card__caption {
+    color: #fff
+}
+
+.nhsuk-card--green.nhsuk-card--clickable a,.nhsuk-card--green a,.nhsuk-card--blue.nhsuk-card--clickable a,.nhsuk-card--blue a {
+    color: #fff
+}
+
+.nhsuk-card--green.nhsuk-card--clickable a:visited,.nhsuk-card--green a:visited,.nhsuk-card--blue.nhsuk-card--clickable a:visited,.nhsuk-card--blue a:visited {
+    color: #f0f4f5
+}
+
+.nhsuk-card--green.nhsuk-card--clickable a:focus,.nhsuk-card--green a:focus,.nhsuk-card--blue.nhsuk-card--clickable a:focus,.nhsuk-card--blue a:focus {
+    color: #212b32;
+    outline: 4px solid transparent;
+    outline-offset: 4px;
+    text-decoration: underline
+}
+
+.nhsuk-card--green.nhsuk-card--clickable a:hover,.nhsuk-card--green a:hover,.nhsuk-card--blue.nhsuk-card--clickable a:hover,.nhsuk-card--blue a:hover {
+    color: #7C2855;
+    text-decoration: underline
+}
+
+.nhsuk-card--green.nhsuk-card--clickable a:active,.nhsuk-card--green a:active,.nhsuk-card--blue.nhsuk-card--clickable a:active,.nhsuk-card--blue a:active {
+    color: #002f5c
+}
+
+.nhsuk-card--green.nhsuk-card--icon,.nhsuk-card--green.nhsuk-card--icon:hover,.nhsuk-card--blue.nhsuk-card--icon,.nhsuk-card--blue.nhsuk-card--icon:hover {
+    background-image: url("data:image/svg+xml,%3Csvg class='nhsuk-icon nhsuk-icon__chevron-right' xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' height='40' width='40' viewBox='0 0 24 24' aria-hidden='true'%3E%3Cpath d='M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z'%3E%3C/path%3E%3C/svg%3E")
+}
+
+.nhsuk-card--no-border {
+    border: 0
+}
+
+a {
+    text-decoration: underline;
+}

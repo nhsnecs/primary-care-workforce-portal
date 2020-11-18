@@ -1,0 +1,16 @@
+<script>
+  /*
+  var setupSectionToggle = function(id) {
+    $(id).children("table[role='presentation']").hide();
+    $('<div class="toggle-section checkbox checkbox-slider--b-flat"><label><input type="checkbox"><span></span></label></div>').appendTo($(id).children(".section-title"));
+  };
+  $(document).ready(function() {
+    setupSectionToggle($("fieldset")[0]);
+    setupSectionToggle($("fieldset")[1]);
+    $('.toggle-section').change(function() {
+      var table = $(this).closest('fieldset').children("table[role='presentation']")[0];
+      $(table).toggle();
+    });
+  });
+*/
+</script>

@@ -1,0 +1,11 @@
+{% assign title = title | default: page.title %}
+<nav class="nhsuk-breadcrumb" aria-label="Breadcrumb">
+  <div class="nhsuk-width-container">
+    <ol class="nhsuk-breadcrumb__list">
+ {% for crumb in page.breadcrumbs -%}
+      <li class="nhsuk-breadcrumb__item"><a class="nhsuk-breadcrumb__link" href="{{ crumb.url | h }}" title="{{ crumb.title | h }}">{{ crumb.title | truncate: 24 | h }}</a></li>
+ {% endfor -%}
+        <li class="nhsuk-breadcrumb__item active">{% block activebreadcrumb %}{{ title | h }}{% endblock %}</li>
+    </ol>
+  </div>
+</nav>

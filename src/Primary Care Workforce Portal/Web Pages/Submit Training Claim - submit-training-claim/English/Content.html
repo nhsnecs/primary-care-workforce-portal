@@ -1,0 +1,39 @@
+{% include 'snippet' snippet_name: 'NECS_N2PP_SetupVariables.js' %}<p>To support partnership skills development, a&nbsp;training allowance of up to £3,000 is made available to every successful applicant, regardless of the number of hours worked.&nbsp;<br>
+  ‌<br>
+  This budget is to be used in garnering non-clinical skills that support working effectively in a partnership role. The scheme participant can select the training they wish to undertake and should note there will be no learning needs assessment. Where the participant is also on the General Practice Fellowship programme, this business training should be over and above the learning opportunities available through the fellowship.&nbsp;<br>
+  ‌<br>
+  ‌The training must meet the following criteria:&nbsp;</p>
+<ul>
+  <li>‌training must start within the first year of accepting a partnership role</li>
+  <li>‌training must support skills relevant to the delivery of a partnership role&nbsp;</li>
+  <li>participants should ensure they are getting good value for money when selecting training, to ensure they are making good use of public funds.&nbsp;</li>
+</ul>
+<p>‌Participants should personally assess what training they need to develop their non-clinical skills, to successfully deliver in a partnership role. This may cover, for example, practice management, financial management, HR and developing staff, IT. To check the training you want to undertake meets the criteria, you can email: <a href="mailto:england.newtopartnershipenquiries@nhs.net">england.newtopartnershipenquiries@nhs.net</a> for advice.&nbsp;&nbsp;</p>
+<hr>
+
+{% fetchxml training_claims_query %}
+<fetch distinct='false' mapping='logical' aggregate='true'> 
+    <entity name='necs_trainingclaim'> 
+        <attribute name='necs_trainingclaimid' alias='claim_count' aggregate='count'/> 
+        <attribute name='necs_amount' alias='claim_sum' aggregate='sum'/>
+        <filter type='and'>
+            <condition attribute='necs_practitionerid' operator='eq' value='{{user.contactid}}' />
+            <condition attribute="statuscode" operator="not-in" >
+                <value>348730000</value>
+                <value>348730004</value>
+                <value>348730005</value>
+            </condition>
+        </filter>
+    </entity>
+</fetch>
+{% endfetchxml %}
+
+{% for item in training_claims_query.results.entities %}
+    <p>
+    You have made {{ item.claim_count }} training claim(s), for a total amount of {{ item.claim_sum | format: "C", "en-GB" }}
+    </p>
+{% endfor %}
+
+<hr>
+
+<p></p>{% entityform name: 'Submit Training Claim' %}<p></p>

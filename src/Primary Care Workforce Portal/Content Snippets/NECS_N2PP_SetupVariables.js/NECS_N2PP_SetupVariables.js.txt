@@ -1,0 +1,7 @@
+{% assign userId = user.id %}
+<script>
+  var userId = '{{ userId }}';
+  var odsCode = '{{ user.necs_practiceodscode }}';
+  var userName = '{{ user.fullname }}';
+  var userRole = '{{ user.accountrolecode }}';
+</script>

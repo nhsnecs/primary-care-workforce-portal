@@ -1,0 +1,221 @@
+/* NECSU Changes */
+
+html, body {
+  font-family: Frutiger W01,Arial,Sans-serif;
+  font-size: 16px;
+}
+
+a {
+    font-family: Frutiger W01,Arial,Sans-serif !important;
+    font-weight: bold !important;
+}
+
+h2 a {
+    line-height: 2.2rem !important;
+}
+
+@media (min-width: 992px) {
+    .nhsuk-width-container {
+        width: 970px !important;
+        max-width: 970px !important;
+    }
+    .nhsuk-header__navigation {
+        width: 970px !important;
+        max-width: 970px !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .nhsuk-width-container {
+        width: 1170px !important;
+        max-width: 1170px !important;
+    }
+    .nhsuk-header__navigation {
+        width: 1170px !important;
+        max-width: 1170px !important;
+    }
+}
+
+
+.nhsuk-header {
+    position: relative !important;
+    overflow: visible !important;
+}
+
+.nhsuk-header__navigation {
+    position: relative !important;
+    overflow: visible !important;
+}
+
+.nhsuk-width-container {
+    position: relative !important;
+    overflow: visible !important;
+}
+
+.nhsuk-header__navigation-list {
+    position: relative !important;
+    overflow: visible !important;
+    justify-content: normal !important;
+}
+
+.nav-align-right {
+    margin-left: auto !important;
+}
+
+.crmEntityFormView .cell {
+    padding: 10px 0 0 0;
+}
+
+@media (max-width: 767px) {
+    .crmEntityFormView .cell {
+        padding: 0;
+    }
+    .section-title {
+        margin-bottom: 0 !important;
+    }
+}
+
+fieldset {
+    margin-bottom: 0 !important;
+}
+
+.crmEntityFormView fieldset {
+    padding-bottom: 0;
+}
+.section-title {
+    font-weight: normal !important;
+}
+.page_section p {
+    border-top: none;
+}
+h4 a {
+    margin-left: 0;
+}
+.crmEntityFormView .actions {
+    margin: 0;
+}
+.crmEntityFormView .tab {
+    margin-bottom: 0;
+}
+
+div.info label {
+    font-weight: normal;
+}
+
+.boolean-radio {
+    display: block;
+    padding: 10px 0 0 20px;
+}
+
+details {
+    margin-bottom: 0;
+}
+
+.nhsuk-expander .nhsuk-details__summary {
+    .padding-bottom: 0 !important;
+}
+
+.nhsuk-details__summary-text {
+    margin-bottom: 10px;
+}
+
+.page-heading {
+    padding-bottom: 24px;
+}
+
+h2.tab-title {
+    display: none;
+}
+
+hr {
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+}
+
+.nhsuk-hint {
+    margin-bottom: 0px !important;
+}
+
+/*
+.container {
+    padding: 0;
+}
+*/
+
+.input-group-addon {
+    padding: 6px 20px !important;
+}
+
+input[type="file"] {
+    padding-bottom: 20px !important;
+}
+
+.nhsuk-button {
+    margin-right: 20px;
+}
+
+.boolean-radio input[type='radio'] {
+    height: 32px !important;
+    width: 32px !important;
+}
+
+td.boolean-radio-cell {
+    border-bottom: none !important;
+}
+
+.boolean-radio label {
+    top: 5px;
+    padding-left: 5px;
+    margin-right: 5px;
+    position: relative;
+}
+
+.radio-label {
+    font-size: 19px;
+    position: relative;
+    top: -10px !important;
+    font-weight: normal;
+    margin-right: 10px !important;
+}
+
+/* Login */
+#local-login-heading {
+    display: none;
+}
+
+a[href='/Account/Login/ForgotPassword'] {
+    display: none;
+}
+
+td, th {
+    font-size: 16px !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    padding-bottom: 8px !important;
+    padding-right: 16px !important;
+    padding-top: 8px !important;
+    border-bottom: 1px solid #d8dde0 !important;
+    text-align: left !important;
+    vertical-align: top !important;
+}
+
+.page-copy {
+    margin-bottom: 10px !important;
+}
+
+.list-group {
+    margin-bottom: 24px !important;
+}
+
+.list-group-item-text p {
+    margin-bottom: 0 !important;
+}
+
+.launchentitylookup, .clearlookupfield {
+  border: 2px solid #4c6272 !important;
+  border-radius: 0 !important;
+}
+
+#odsSearch {
+    padding: 3px 12px !important;
+}

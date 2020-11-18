@@ -1,0 +1,16 @@
+.guidance ol {
+    list-style-type: lower-alpha !importand;
+    font-size: 16px !important;
+}
+li {
+    font-size: 16px !important;
+    margin-bottom: 0 !important;
+}
+.guidance {
+    font-size: 16px !important;
+    padding-top: 10px !important;
+}
+.guidance-and {
+    font-weight: bolder !important;
+    font-size: 16px !important;
+}
