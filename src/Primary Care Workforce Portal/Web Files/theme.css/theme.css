@@ -219,3 +219,8 @@ td, th {
 #odsSearch {
     padding: 3px 12px !important;
 }
+
+tr.nhsuk-form-group--error td {
+    padding-left: 20px !important;
+}
+

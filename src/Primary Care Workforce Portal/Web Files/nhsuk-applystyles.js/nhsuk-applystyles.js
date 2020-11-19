@@ -28,14 +28,27 @@ var applyNhsStyling = function () {
         .removeClass("section-title")
         .addClass("nhsuk-fieldset__legend nhsuk-fieldset__legend--l");
 
+    /*
+    $(".section")
+        .addClass("nhsuk-form-group");
+    */
+
+    $("label")
+        .not(".radio-label")
+        .addClass("nhsuk-label");
+
     // Remove .datetimepickers & replace with a native date input
     $(".datetimepicker").each(function (index) {
         var input = $(this).prev();
 
          // Readonly on review forms (so ignore)
         if (!input.attr("readonly")) {
-            var currentValue = dayjs(input.val()).format("YYYY-MM-DD");
-            var dateInput = $("<input type='date' value='" + currentValue + "' class='nhsuk-input nhsuk-input--width-10'/>");
+            var id = input.attr("id") + "_date_input";
+            var dateInput = $("<input id='" + id + "' name='" + id + "' type='date' class='nhsuk-input nhsuk-input--width-10'/>");
+            if (input.val()) {
+                var currentValue = dayjs(input.val()).format("YYYY-MM-DD");
+                dateInput.val(currentValue);
+            }
             dateInput.prependTo($(this).parent());
             dateInput.change(function () {
                 var newValue = dayjs($(this).val()).format("YYYY-MM-DDT00:00:00.0000000");

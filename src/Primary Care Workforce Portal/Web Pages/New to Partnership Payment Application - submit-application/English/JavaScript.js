@@ -62,5 +62,11 @@ $(document).ready(function () {
 
 var setFteValue = function (value) {
     var fte = (value * 4.1666666666666667) / 37.5;
+    $("#necs_clinicalsessionsweekaverage").val(value);
     $('#necs_fulltimeequivalent').val(fte.toFixed(2));
 };
+
+
+// Setup Validation
+var rules = {};
+setupValidationForForm(rules);

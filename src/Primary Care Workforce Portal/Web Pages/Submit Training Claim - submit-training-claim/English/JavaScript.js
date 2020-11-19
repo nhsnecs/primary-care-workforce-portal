@@ -8,4 +8,8 @@ $(document).ready(function () {
     $("#necs_amount").attr("type", "number");
     $("#necs_amount").addClass("nhsuk-input--width-5");
  
+// Setup Validation
+    var rules = {};
+    setupValidationForForm(rules);
+
 });

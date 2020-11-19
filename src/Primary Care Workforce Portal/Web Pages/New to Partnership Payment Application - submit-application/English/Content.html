@@ -10,82 +10,57 @@
   <fieldset class="nhsuk-fieldset">
     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
       Who is this Application from?
-    </legend><span class="boolean-radio"><input id="gp" type="radio" name="who" value="gp"><label for="gp" class="radio-label">GP</label><input id="nurse" type="radio" name="who" value="nurse"><label for="nurse" class="radio-label">Nurse</label>
-<input id="other" type="radio" name="who" value="other"><label for="other" class="radio-label">Allied Health Professional or Clinical Pharmacist partner</label>
-
-</span>
+    </legend><span class="boolean-radio"><input id="gp" type="radio" name="who" value="gp"><label for="gp" class="radio-label">GP</label><input id="nurse" type="radio" name="who" value="nurse"><label for="nurse" class="radio-label">Nurse</label><input id="other" type="radio" name="who" value="other"><label for="other" class="radio-label">Allied Health Professional or Clinical Pharmacist partner</label></span>
   </fieldset>
 </div>
-
-<div id="fte-guidance">
-
-<br/><u>Calculation of FTE</u><br/>
-Number of hours worked is measured in clinical sessions. 
-Full time is 37.5 hours per week based on one session being 4 hours and ten minutes. This equates to 1 FTE (Full time equivalent). Dividing your clinical contracted hours per week by 37.5 will calculate your FTE.
-<br/>
-<br/>This table demonstrates how this is calculated (click a row to set the FTE value): 
-
-<table role="table" class="nhsuk-table-responsive" style="margin-bottom: 0;">
-
-<thead role="rowgroup" class="nhsuk-table__head">
-<tr role="row">
-  <th role="columnheader" class="" scope="col">
-    Hours worked
-  </th>
-  <th role="columnheader" class="" scope="col">
-    No of sessions
-  </th>
-</tr>
-</thead>
-
-  <tbody class="nhsuk-table__body">
-
-    <tr role="row" class="nhsuk-table__row" onclick='setFteValue(2)'>
-      <td role="cell" class="nhsuk-table__cell">8 hours 20 mins</td>
-      <td role="cell" class="nhsuk-table__cell">2</td>
-    </tr>
-
-    <tr role="row" class="nhsuk-table__row" onclick='setFteValue(3)'>
-      <td role="cell" class="nhsuk-table__cell">12 hours 30 mins</td>
-      <td role="cell" class="nhsuk-table__cell">3</td>
-    </tr>
-
-    <tr role="row" class="nhsuk-table__row" onclick='setFteValue(4)'>
-      <td role="cell" class="nhsuk-table__cell">16 hours 40 mins</td>
-      <td role="cell" class="nhsuk-table__cell">4</td>
-    </tr>
-
-    <tr role="row" class="nhsuk-table__row" onclick='setFteValue(5)'>
-      <td role="cell" class="nhsuk-table__cell">20 hours 50 mins</td>
-      <td role="cell" class="nhsuk-table__cell">5</td>
-    </tr>
-
-    <tr role="row" class="nhsuk-table__row" onclick='setFteValue(6)'>
-      <td role="cell" class="nhsuk-table__cell">25 hours</td>
-      <td role="cell" class="nhsuk-table__cell">6</td>
-    </tr>
-
-    <tr role="row" class="nhsuk-table__row" onclick='setFteValue(7)'>
-      <td role="cell" class="nhsuk-table__cell">29 hours 10 mins</td>
-      <td role="cell" class="nhsuk-table__cell">7</td>
-    </tr>
-
-    <tr role="row" class="nhsuk-table__row" onclick='setFteValue(8)'>
-      <td role="cell" class="nhsuk-table__cell">33 hours 20 mins</td>
-      <td role="cell" class="nhsuk-table__cell">8</td>
-    </tr>
-
-    <tr role="row" class="nhsuk-table__row" onclick='setFteValue(9)'>
-      <td role="cell" class="nhsuk-table__cell">37 hours 30 mins +</td>
-      <td role="cell" class="nhsuk-table__cell">9</td>
-    </tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-{% entityform name: 'Submit Application' %}
-
-
+<div id="fte-guidance"><br><u>Calculation of FTE</u><br>
+  Number of hours worked is measured in clinical sessions.
+  Full time is 37.5 hours per week based on one session being 4 hours and ten minutes. This equates to 1 FTE (Full time equivalent). Dividing your clinical contracted hours per week by 37.5 will calculate your FTE.
+  <br><br>This table demonstrates how this is calculated (click a row to set the FTE value):
+  <table role="table" class="nhsuk-table-responsive" style="margin-bottom: 0;">
+    <thead role="rowgroup" class="nhsuk-table__head">
+      <tr role="row">
+        <th role="columnheader" scope="col">
+          Hours worked
+        </th>
+        <th role="columnheader" scope="col">
+          No of sessions
+        </th>
+      </tr>
+    </thead>
+    <tbody class="nhsuk-table__body">
+      <tr role="row" onclick="setFteValue(2)" class="nhsuk-table__row" style="cursor: pointer;">
+        <td role="cell" class="nhsuk-table__cell">8 hours 20 mins</td>
+        <td role="cell" class="nhsuk-table__cell">2</td>
+      </tr>
+      <tr role="row" onclick="setFteValue(3)" class="nhsuk-table__row" style="cursor: pointer;">
+        <td role="cell" class="nhsuk-table__cell">12&nbsp;hours 30 mins</td>
+        <td role="cell" class="nhsuk-table__cell">3</td>
+      </tr>
+      <tr role="row" onclick="setFteValue(4)" class="nhsuk-table__row" style="cursor: pointer;">
+        <td role="cell" class="nhsuk-table__cell">16 hours 40 mins</td>
+        <td role="cell" class="nhsuk-table__cell">4</td>
+      </tr>
+      <tr role="row" onclick="setFteValue(5)" class="nhsuk-table__row" style="cursor: pointer;">
+        <td role="cell" class="nhsuk-table__cell">20 hours&nbsp;50 mins</td>
+        <td role="cell" class="nhsuk-table__cell">5</td>
+      </tr>
+      <tr role="row" onclick="setFteValue(6)" class="nhsuk-table__row" style="cursor: pointer;">
+        <td role="cell" class="nhsuk-table__cell">25 hours</td>
+        <td role="cell" class="nhsuk-table__cell">6</td>
+      </tr>
+      <tr role="row" onclick="setFteValue(7)" class="nhsuk-table__row" style="cursor: pointer;">
+        <td role="cell" class="nhsuk-table__cell">29 hours 10 mins</td>
+        <td role="cell" class="nhsuk-table__cell">7</td>
+      </tr>
+      <tr role="row" onclick="setFteValue(8)" class="nhsuk-table__row" style="cursor: pointer;">
+        <td role="cell" class="nhsuk-table__cell">33 hours 20 mins</td>
+        <td role="cell" class="nhsuk-table__cell">8</td>
+      </tr>
+      <tr role="row" onclick="setFteValue(9)" class="nhsuk-table__row" style="cursor: pointer;">
+        <td role="cell" class="nhsuk-table__cell">37 hours 30 mins +</td>
+        <td role="cell" class="nhsuk-table__cell">9</td>
+      </tr>
+    </tbody>
+  </table>
+</div>{% entityform name: 'Submit Application' %}

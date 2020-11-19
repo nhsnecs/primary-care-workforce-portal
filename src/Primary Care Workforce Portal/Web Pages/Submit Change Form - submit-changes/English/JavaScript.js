@@ -66,11 +66,14 @@ var showRelevantFields = function (selectedOption) {
     });
 
 // Section handling
-    var selectSection = $("<legend class='nhsuk-fieldset__legend nhsuk-fieldset__legend--l'>Select what's changed</legend><select id='sections' class='form-control picklist nhsuk-select nhsuk-input--width-20'><option>(select details)</option>" + options + "</select><br/>");
+    var selectSection = $("<legend class='nhsuk-fieldset__legend nhsuk-fieldset__legend--l'>Select what's changed</legend><select id='sections' name='sections' class='form-control picklist nhsuk-select'><option selected value=''>(select an option)</option>" + options + "</select><br/>");
     sections[0].section.parent().prepend(selectSection);
+    sections[0].section.parent().addClass("nhsuk-form-group");
     selectSection.change(function () {
-        //hideAllFields();
         var selectedTitle = $(this).val();
+        if (selectedTitle != "") {
+            $("#sections").removeClass("nhsuk-select--error");
+        }
         var selectedSection = sections.find(function (item) {
             return item.title == selectedTitle;
         });
@@ -81,6 +84,9 @@ var showRelevantFields = function (selectedOption) {
             selectedSection.section.show();
             selection = selectedSection.section;
         }
+        // Validation for each
+        
+        
     });
 
 // Descriptions
@@ -114,5 +120,11 @@ $("table[role='presentation']").each(function(index) {
 
 });
 
+
+// Setup Validation
+var rules = {
+    sections: "required"
+};
+setupValidationForForm(rules);
 
 });

@@ -33,4 +33,8 @@ $(document).ready(function () {
     $(".launchentitylookup").hide();
     $("div.text-muted").hide();
 
+// Setup Validation
+    var rules = {};
+    setupValidationForForm(rules);
+
 });
