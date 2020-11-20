@@ -1,19 +1,19 @@
 // Validation
-var highlightError = function (element) {
-    $(element).closest('tr').addClass('nhsuk-form-group--error');
-    $(element).closest('.nhsuk-form-group').addClass('nhsuk-form-group--error');
-    $(element).addClass("nhsuk-input--error");
-    $(element).addClass("nhsuk-select--error");
-};
+    var highlightError = function (element) {
+        $(element).closest('tr').addClass('nhsuk-form-group--error');
+        $(element).closest('.nhsuk-form-group').addClass('nhsuk-form-group--error');
+        $(element).addClass("nhsuk-input--error");
+        $(element).addClass("nhsuk-select--error");
+    };
 
-var unhighlightError = function (element) {
-    $(element).closest('tr').removeClass('nhsuk-form-group--error');
-    $(element).closest('.nhsuk-form-group').removeClass('nhsuk-form-group--error');
-    $(element).removeClass("nhsuk-input--error");
-    $(element).removeClass("nhsuk-select--error");
-};
+    var unhighlightError = function (element) {
+        $(element).closest('tr').removeClass('nhsuk-form-group--error');
+        $(element).closest('.nhsuk-form-group').removeClass('nhsuk-form-group--error');
+        $(element).removeClass("nhsuk-input--error");
+        $(element).removeClass("nhsuk-select--error");
+    };
 
-var validateForm = function (rules) {
+var validateForm = function (rules, messages) {
     return $("form").validate({
             rules: rules,
             ignore: ':hidden, [readonly=readonly]',
@@ -30,14 +30,34 @@ var validateForm = function (rules) {
             errorPlacement: function(error, element) {
                 error.insertBefore(element);
             },
+            messages: messages
         });
 };
 
+// Date validators (min & max)
+
+    $.validator.addMethod('minimumDate', function (v, el, minimumDate) {
+        if (this.optional(el)) {
+            return true;
+        }
+        var selectedDate = dayjs(new Date($(el).val()));
+        return selectedDate.isAfter(minimumDate);
+    }, 'Date should be later than {0}.');
+
+    $.validator.addMethod('maximumDate', function (v, el, maximumDate) {
+        if (this.optional(el)) {
+            return true;
+        }
+        var selectedDate = dayjs(new Date($(el).val()));
+        return selectedDate.isBefore(maximumDate);
+    }, 'Date should be earlier than {0}.');
+
 // Setup validation for form
-//      Removes existing jQuery validator
-//      Takes all inputs starting with necs_, but exluding labels & descriptions
-//      Sets up as required (assuming if they're visible they're required
-var setupValidationForForm = function (rules) {
+var setupValidationForForm = function (rules, messages) {
+
+    // Removes existing jQuery validator
+    // Takes all inputs starting with necs_, but exluding labels & descriptions
+    // Sets up as required (assuming if they're visible they're required
 
     // Remove existing validation
     var validator = $("form").validate();
@@ -61,7 +81,7 @@ var setupValidationForForm = function (rules) {
     });
 
     // Setup validator
-    var formValidator = validateForm(rulesWithNames);
+    var formValidator = validateForm(rulesWithNames, messages);
 
     // Hook into existing validation
     if (typeof (entityFormClientValidate) != 'undefined') {

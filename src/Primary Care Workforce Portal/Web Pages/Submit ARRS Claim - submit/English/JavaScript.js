@@ -40,10 +40,27 @@ $(document).ready(function () {
 
 // Declaration -> enable/disable submit
     var submitButton = $("#InsertButton");
-    submitButton.attr("disabled", $("#necs_isdeclarationconfirmed_0").is(":checked"));
+    var enableDisableSubmitButton = function () {
+        var agreed = $("#necs_isdeclarationconfirmed_1").is(":checked");
+        var confirmed = $("#confirm-yes").prop("checked");
+        submitButton.attr("disabled", !(agreed && confirmed));
+    };
     $("#necs_isdeclarationconfirmed_0, #necs_isdeclarationconfirmed_1").click(function () {
-        submitButton.attr("disabled", $("#necs_isdeclarationconfirmed_0").is(":checked"));
+        enableDisableSubmitButton();
     });
+
+// Move declaration before insert button
+    $("#confirmation-container").prependTo("div.actions");
+
+// Disable approve button
+    $(".form-custom-actions").find("button").first().attr("disabled", true);
+
+// Confirm declaration sets enabled
+    $("#confirm-yes").change(function () {
+        enableDisableSubmitButton();
+    });
+
+    enableDisableSubmitButton();
 
 // Setup Validation
     var rules = { necs_notes: null };

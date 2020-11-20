@@ -224,3 +224,11 @@ tr.nhsuk-form-group--error td {
     padding-left: 20px !important;
 }
 
+#confirmation-checkboxes {
+    padding-left: 20px !important;
+    padding-top: 20px !important;
+}
+
+.nhsuk-footer__list {
+    width: 100% !important;
+}

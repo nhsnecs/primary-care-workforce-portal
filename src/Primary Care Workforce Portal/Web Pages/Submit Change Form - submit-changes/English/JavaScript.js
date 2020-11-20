@@ -84,9 +84,6 @@ var showRelevantFields = function (selectedOption) {
             selectedSection.section.show();
             selection = selectedSection.section;
         }
-        // Validation for each
-        
-        
     });
 
 // Descriptions
@@ -122,9 +119,18 @@ $("table[role='presentation']").each(function(index) {
 
 
 // Setup Validation
+var minimumDate = dayjs(new Date(2020, 0, 1));
+var maximumDate = minimumDate.add(1, "year");
 var rules = {
-    sections: "required"
+    sections: "required",
+    necs_datewhenleftpartnershiprole_date_input: { required: true, minimumDate: minimumDate, maximumDate: maximumDate }
 };
-setupValidationForForm(rules);
+var messages = {
+    necs_datewhenleftpartnershiprole_date_input: {
+        minimumDate: 'Date must be on or after ' + minimumDate.format("DD/MM/YYYY"),
+        maximumDate: 'Date must be before ' + maximumDate.format("DD/MM/YYYY"),
+    }
+};
+setupValidationForForm(rules, messages);
 
 });

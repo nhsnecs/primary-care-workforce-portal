@@ -8,8 +8,16 @@ $(document).ready(function () {
         .prop("type", "number")
         .addClass("nhsuk-input--width-3");
 
+    $("#necs_applicant_address_line1, #necs_applicant_address_city, #necs_applicant_address_county")
+        .addClass("nhsuk-input--width-20");
+
+    $("#necs_applicant_address_mobilephone, #necs_applicant_address_telephone, #necs_applicant_address_postalcode")
+        .addClass("nhsuk-input--width-10");
+
+/* 
     $("#necs_fulltimeequivalent, #necs_clinicalsessionsweekaverage")
         .attr("required", "required");
+*/
 
 // Hide before GP / Nurse selected
     $("div[data-name='tab_application']").hide();
@@ -88,5 +96,5 @@ var setFteValue = function (value) {
 };
 
 // Setup Validation
-var rules = {};
+var rules = { necs_applicant_address_telephone: null, necs_applicant_address_mobilephone: null };
 setupValidationForForm(rules);
