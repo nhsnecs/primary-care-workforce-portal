@@ -7,7 +7,7 @@ $(document).ready(function () {
     $("#necs_meetstrainingrequirements").parent().prepend(guidance);
 
 // Setup Validation
-    var rules = {};
+    var rules = { necs_employeeid: null, necs_lefton_date_input: null, necs_totalcost: null, necs_maxreimbursement: null, necs_maxadjustedreimbursement: null };
     setupValidationForForm(rules);
 
 });

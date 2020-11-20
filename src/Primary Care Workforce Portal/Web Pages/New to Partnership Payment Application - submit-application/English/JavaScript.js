@@ -20,27 +20,48 @@ $(document).ready(function () {
     $("#gp, #nurse, #other").click(function () {
         var selected = $(this).val();
         var fieldsetIndex = 1;
+        var applicationFromId;
         switch (selected) {
             case "gp":
                 $($("fieldset")[1]).show();
                 $($("fieldset")[2]).hide();
                 $($("fieldset")[3]).hide();
+                applicationFromId = 348730000;
                 break;
             case "nurse":
                 $($("fieldset")[1]).hide();
                 $($("fieldset")[2]).show();
                 $($("fieldset")[3]).hide();
+                applicationFromId = 348730001;
                 break;
             case "other":
                 $($("fieldset")[1]).hide();
                 $($("fieldset")[2]).hide();
                 $($("fieldset")[3]).show();
+                applicationFromId = 348730002;
                 break;
         }
+        $("#necs_applicationfrom").val(applicationFromId);
         $("div[data-name='tab_application']").show();
         $(".cell.file-cell").show();
         $("#InsertButton").show();
     });
+
+// Reload selection (if set)
+    var selectedOption = $("#necs_applicationfrom").val();
+    switch (selectedOption) {
+        case 348730000: $("#gp").trigger("click"); break;
+        case 348730001: $("#nurse").trigger("click"); break;
+        case 348730002: $("#other").trigger("click"); break;
+    }
+    $("#necs_applicationfrom").closest("fieldset").hide();
+
+// If saved & displaying success panel, hide selection radio buttons
+    setTimeout(function () {
+        if ($("#MessagePanel").length > 0) {
+            $("#application-from").hide();
+        }
+    }, 500);
 
 // Session increased No / Yes
     $("#necs_sessionincreasednumber_label").parent().parent().hide();
@@ -65,7 +86,6 @@ var setFteValue = function (value) {
     $("#necs_clinicalsessionsweekaverage").val(value);
     $('#necs_fulltimeequivalent').val(fte.toFixed(2));
 };
-
 
 // Setup Validation
 var rules = {};

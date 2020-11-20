@@ -6,17 +6,18 @@
   working in primary care, stabilising the partnership model and helping to increase clinicians’
   participation levels so that primary care and the patients it serves have access to the
   workforce they need. </p>
-<div class="nhsuk-form-group">
+<div id="application-from" class="nhsuk-form-group">
   <fieldset class="nhsuk-fieldset">
     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
       Who is this Application from?
-    </legend><span class="boolean-radio"><input id="gp" type="radio" name="who" value="gp"><label for="gp" class="radio-label">GP</label><input id="nurse" type="radio" name="who" value="nurse"><label for="nurse" class="radio-label">Nurse</label><input id="other" type="radio" name="who" value="other"><label for="other" class="radio-label">Allied Health Professional or Clinical Pharmacist partner</label></span>
+    </legend><span class="boolean-radio"><input id="gp" type="radio" name="who" value="gp" selected="true"><label for="gp" class="radio-label">GP</label><input id="nurse" type="radio" name="who" value="nurse"><label for="nurse" class="radio-label">Nurse</label><input id="other" type="radio" name="who" value="other"><label for="other" class="radio-label">A registered professional who is not a GP or a nurse</label></span>
   </fieldset>
 </div>
 <div id="fte-guidance"><br><u>Calculation of FTE</u><br>
   Number of hours worked is measured in clinical sessions.
-  Full time is 37.5 hours per week based on one session being 4 hours and ten minutes. This equates to 1 FTE (Full time equivalent). Dividing your clinical contracted hours per week by 37.5 will calculate your FTE.
-  <br><br>This table demonstrates how this is calculated (click a row to set the FTE value):
+  Full time is 37.5 hours per week based on one session being 4 hours and ten minutes. This equates to 1 FTE (Full time equivalent).
+  <br/><br/>If you calculate your working time in hours rather than sessions, dividing your contracted hours per week by 37.5 will calculate your FTE.
+  <br/><br/>This table demonstrates how this is calculated (click a row to use the number of sessions and calculated FTE):
   <table role="table" class="nhsuk-table-responsive" style="margin-bottom: 0;">
     <thead role="rowgroup" class="nhsuk-table__head">
       <tr role="row">
@@ -64,3 +65,15 @@
     </tbody>
   </table>
 </div>{% entityform name: 'Submit Application' %}
+
+
+<script>
+$(document).ready(function () {
+
+// If saved & displaying success panel, hide selection radio buttons
+    if ($("#MessagePanel").length > 0) {
+        $("#application-from").hide();
+    }
+
+});
+</script>

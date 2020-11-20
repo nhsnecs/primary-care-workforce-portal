@@ -16,7 +16,7 @@ var unhighlightError = function (element) {
 var validateForm = function (rules) {
     return $("form").validate({
             rules: rules,
-            ignore: ':hidden',
+            ignore: ':hidden, [readonly=readonly]',
             onkeyup : false,
             onfocusout : false,
             highlight: function(element) {
@@ -44,14 +44,14 @@ var setupValidationForForm = function (rules) {
     validator.destroy();
 
     // Add all necs_ elements
-        $("form").find("[id^='necs_']").each(function (index) {
-            var id = $(this).attr("id");
-            if (!(id in rules)) {
-                if (!id.contains("_label") && !id.contains("_description")) {
-                    rules[id] = "required";
-                }
+    $("form").find("[id^='necs_']").each(function (index) {
+        var id = $(this).attr("id");
+        if (!(id in rules)) {
+            if (!id.contains("_label") && !id.contains("_description")) {
+                rules[id] = "required";
             }
-        });
+        }
+    });
 
     // Set names instead of ids (jQuery validator uses/relies on names)
     var rulesWithNames = {};
