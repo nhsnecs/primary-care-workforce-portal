@@ -18,6 +18,7 @@ $(document).ready(function () {
     });
 
 // Monthly fees only available for 'Social Prescribing Link Worker' (57ab0870-6eec-ea11-a815-000d3a86a78c)
+    $("#necs_monthlyfees").val("0");
     $("#necs_monthlyfees").closest("tr").hide();
     $("#necs_professionid").on("change", function () {
         var selected = $(this).val();
@@ -25,6 +26,7 @@ $(document).ready(function () {
             $("#necs_monthlyfees").closest("tr").show();
         } else {
             $("#necs_monthlyfees").closest("tr").hide();
+            $("#necs_monthlyfees").val("0");
         }
         $("#necs_employeeid").val($("#necs_professionid option:selected").text() + " 1");
     });
