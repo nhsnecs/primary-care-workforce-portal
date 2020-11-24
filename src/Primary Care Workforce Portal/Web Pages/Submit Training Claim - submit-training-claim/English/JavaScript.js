@@ -7,7 +7,16 @@ $(document).ready(function () {
     $("#necs_name").addClass("nhsuk-input--width-20");
     $("#necs_amount").attr("type", "number");
     $("#necs_amount").addClass("nhsuk-input--width-5");
- 
+
+// Move practice approval guidance above submit button
+    var element = $("#approval-guidance").detach();
+    $("#InsertButton").parent().prepend(element);
+
+// Hide guidance if successfully submitted
+    if ($(".alert-success").length > 0) {
+        $(".guidance").hide();
+    }
+
 // Setup Validation
     var rules = {};
     setupValidationForForm(rules);

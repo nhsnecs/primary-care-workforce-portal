@@ -1,14 +1,14 @@
-{% include 'snippet' snippet_name: 'NECS_N2PP_SetupVariables.js' %}<p>To support partnership skills development, a&nbsp;training allowance of up to £3,000 is made available to every successful applicant, regardless of the number of hours worked.&nbsp;<br>
+{% include 'snippet' snippet_name: 'NECS_N2PP_SetupVariables.js' %}<p class='guidance'>To support partnership skills development, a&nbsp;training allowance of up to £3,000 is made available to every successful applicant, regardless of the number of hours worked.&nbsp;<br>
   ‌<br>
   This budget is to be used in garnering non-clinical skills that support working effectively in a partnership role. The scheme participant can select the training they wish to undertake and should note there will be no learning needs assessment. Where the participant is also on the General Practice Fellowship programme, this business training should be over and above the learning opportunities available through the fellowship.&nbsp;<br>
   ‌<br>
   ‌The training must meet the following criteria:&nbsp;</p>
-<ul>
+<ul class='guidance'>
   <li>‌training must start within the first year of accepting a partnership role</li>
   <li>‌training must support skills relevant to the delivery of a partnership role&nbsp;</li>
   <li>participants should ensure they are getting good value for money when selecting training, to ensure they are making good use of public funds.&nbsp;</li>
 </ul>
-<p>‌Participants should personally assess what training they need to develop their non-clinical skills, to successfully deliver in a partnership role. This may cover, for example, practice management, financial management, HR and developing staff, IT. To check the training you want to undertake meets the criteria, you can email: <a href="mailto:england.newtopartnershipenquiries@nhs.net">england.newtopartnershipenquiries@nhs.net</a> for advice.&nbsp;&nbsp;</p>
+<p class='guidance'>‌Participants should personally assess what training they need to develop their non-clinical skills, to successfully deliver in a partnership role. This may cover, for example, practice management, financial management, HR and developing staff, IT. To check the training you want to undertake meets the criteria, you can email: <a href="mailto:england.newtopartnershipenquiries@nhs.net">england.newtopartnershipenquiries@nhs.net</a> for advice.&nbsp;&nbsp;</p>
 <hr>
 
 {% fetchxml training_claims_query %}
@@ -29,11 +29,11 @@
 {% endfetchxml %}
 
 {% for item in training_claims_query.results.entities %}
-    <p>
+    <p class='guidance'>
     You have made {{ item.claim_count }} training claim(s), for a total amount of {{ item.claim_sum | format: "C", "en-GB" }}
     </p>
 {% endfor %}
 
-<hr>
+<hr class='guidance' />
 
-<p></p>{% entityform name: 'Submit Training Claim' %}<p></p>
+<p></p>{% entityform name: 'Submit Training Claim' %}<div id="approval-guidance" class="guidance text-muted">Please note your claim will be sent to your practice manager for approval before being reviewed by the New to Partnership Team</div>

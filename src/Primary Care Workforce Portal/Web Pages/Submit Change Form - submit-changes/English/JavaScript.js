@@ -52,13 +52,30 @@ var showRelevantFields = function (selectedOption) {
         showRelevantFields($(this).val());
     });
 
+// Move attach file into changes to contract section
+    var attachFile = $("#AttachFile").closest("div.tr").detach();
+    $("table[data-name='section_practice_contract']").parent().append(attachFile);
+
+// Equity share -> Working capacity other
+    var showEquityShareOther = function (value) {
+        if (value == "348730003") {
+            $("#necs_workingcapacityother").closest("tr").show();
+        } else {
+            $("#necs_workingcapacityother").closest("tr").hide();
+        }
+    };
+    $("#necs_workingcapacity").change(function () {
+        showEquityShareOther($(this).val());
+    });
+    showEquityShareOther($("#necs_workingcapacity").val());
+
 // Turn sections into dropdown options
     var selection = null;
     var sections = [];
     var options = "";
     $("fieldset").each(function(index) {
         $(this).hide();
-        var title = $(this).attr("aria-label");
+        var title = $(this).find("legend").text();
         if (title) {
             sections.push({ title: title, section: $(this) });
             options += "<option>" + title + "</option>";
@@ -123,7 +140,8 @@ var minimumDate = dayjs(new Date(2020, 0, 1));
 var maximumDate = minimumDate.add(1, "year");
 var rules = {
     sections: "required",
-    necs_datewhenleftpartnershiprole_date_input: { required: true, minimumDate: minimumDate, maximumDate: maximumDate }
+    necs_datewhenleftpartnershiprole_date_input: { required: true, minimumDate: minimumDate, maximumDate: maximumDate },
+    AttachFile: { required: function () { return $("#sections option:selected").text() == "Changes in practice contract"; } }
 };
 var messages = {
     necs_datewhenleftpartnershiprole_date_input: {
