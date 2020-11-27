@@ -39,13 +39,13 @@ $(document).ready(function () {
         var confirmed = $("#confirm-yes").prop("checked");
         $(".form-custom-actions").find("input[type='button'], button").attr("disabled", !(agreed && confirmed));
     };
-
     $("#necs_isdeclarationconfirmed_0, #necs_isdeclarationconfirmed_1").click(function () {
         enableDisableSubmitButton();
     });
 
 // Move declaration before buttons
-    $("#confirmation-container").prependTo(".form-custom-actions");
+    var confirmationContainer = $("#confirmation-container");
+    $(".form-custom-actions").prepend(confirmationContainer);
 
 // Disable buttons
     $(".form-custom-actions").find("input[type='button'], button").attr("disabled", true);
@@ -56,7 +56,6 @@ $(document).ready(function () {
     });
 
     enableDisableSubmitButton();
-
 
 // Setup Validation
     var rules = { necs_notes: null };

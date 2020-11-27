@@ -31,12 +31,14 @@ $(document).ready(function () {
     $("#necs_weightedlistsize").addClass("nhsuk-input--width-10");
 
 // Submitted By
-    $("#necs_submittedbyid_name").val(userName);
-    $("#necs_submittedbyid_name").attr("disabled", true);
-    $("#necs_submittedbyid").val(userId);
-    $("#necs_submittedbyid_entityname").val("contact");
-    $(".launchentitylookup").hide();
-    $("div.text-muted").hide();
+    setTimeout(function () {
+        $("#necs_submittedbyid_name").val(userName);
+        $("#necs_submittedbyid_name").attr("disabled", true);
+        $("#necs_submittedbyid").val(userId);
+        $("#necs_submittedbyid_entityname").val("contact");
+        $(".launchentitylookup").hide();
+    }, 500);
+
 
 // Declaration -> enable/disable submit
     var submitButton = $("#InsertButton");
@@ -59,8 +61,20 @@ $(document).ready(function () {
     $("#confirm-yes").change(function () {
         enableDisableSubmitButton();
     });
-
     enableDisableSubmitButton();
+
+// Set reference data values & hide section
+    /* $("table[data-name='summary_section_reference']").hide();
+    setTimeout(function () {
+        $("#necs_payeeodscode").val(odsCode);
+        $("#necs_necs_payeeid_name").val(odsCode);
+        $("#necs_pcnodscode").val(pcnOdsCode);
+        $("#necs_pcnid_name").val(pcnOdsCode);
+        $("#necs_pcnid").val(pcnId);
+        $("#necs_ccgid_name").val(ccgOdsCode);
+        $("#necs_ccgid").val(ccgId);
+    }, 500);
+    */
 
 // Setup Validation
     var rules = { necs_notes: null };

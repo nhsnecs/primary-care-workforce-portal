@@ -2,6 +2,11 @@
 <script>
   var userId = '{{ userId }}';
   var odsCode = '{{ user.necs_practiceodscode }}';
+  var practiceId = '{{ user.necs_practiceid.Id }}';
+  var pcnOdsCode = '{{ user.necs_pcnodscode }}';
+  var pcnId = '{{ user.necs_pcnid.Id }}';
+  var ccgOdsCode = '{{ user.necs_ccgodscode }}';
+  var ccgId = '{{ user.necs_ccgid.Id }}';
   var userName = '{{ user.fullname }}';
   var userRole = '{{ user.accountrolecode }}';
 </script>

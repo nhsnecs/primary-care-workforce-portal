@@ -35,7 +35,6 @@ var validateForm = function (rules, messages) {
 };
 
 // Date validators (min & max)
-
     $.validator.addMethod('minimumDate', function (v, el, minimumDate) {
         if (this.optional(el)) {
             return true;
@@ -90,6 +89,12 @@ var setupValidationForForm = function (rules, messages) {
             entityFormClientValidate = function() {
                 originalValidationFunction.apply(this, arguments);
                 var formValid = $("form").valid();
+                if (!formValid) {
+                    var container = $(".nhsuk-select--error").first().closest("tr");
+                    if (container) {
+                        $([document.documentElement, document.body]).animate({ scrollTop: container.offset().top }, 1000);
+                    }
+                }
                 return formValid;
             };
         }

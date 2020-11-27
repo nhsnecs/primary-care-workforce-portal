@@ -59,7 +59,7 @@
 			}
 		});
 		
-        $('#necs_practiceodscode, #necs_ccgodscode').each(function() {
+        $('#necs_practiceodscode, #necs_pcnodscode, #necs_ccgodscode').each(function() {
 			var odsCode$ = $(this);
             var controlDiv$ = odsCode$.parent();
             controlDiv$.append('<div class="input-group"></div>');
@@ -67,6 +67,7 @@
             odsCode$.prop('readonly', true);
             inputGroup$.append(odsCode$, '<div class="input-group-btn"><button type="button" class="btn btn-default launchentitylookup" title="Launch ODS lookup" aria-label="Launch ODS lookup" data-toggle="modal" data-target="#odsLookupModal"><span class="sr-only">Launch ODS lookup modal</span><span class="fa fa-search" aria-hidden="true"></span></button></div>')
 		});
+
     });
 </script>
 <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/jquery.validate.js" crossorigin="anonymous"></script>
