@@ -64,9 +64,13 @@
           {% endif %}
 
         {% if user %}
-        <li class="nhsuk-header__navigation-item nav-align-right" role="menuitem" aria-haspopup="true" aria-expanded="false">
-          <a class="dropdown-toggle nhsuk-header__navigation-link" href="#" title="{{ user.fullname | escape }}" data-toggle="dropdown">
-            {{ user.fullname | escape }}
+            {% assign userName = user.fullname %}
+            {% if userName == null %}
+                {% assign userName = user.emailaddress1 %}
+            {% endif %}
+        <li class="nhsuk-header__navigation-item nav-align-right" role="button" aria-haspopup="true" aria-expanded="false">
+          <a class="dropdown-toggle nhsuk-header__navigation-link" href="#" title="{{ userName | escape }}" data-toggle="dropdown">
+            {{ userName | escape }}
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
@@ -81,7 +85,7 @@
             {% endfor %}
             {% endif %}
             {% else %}
-            <li role="none"><a role="menuitem" aria-label="{{ snippets["Profile Link Text"] | default:resx["Profile_Text"] | escape }}" href="{{ sitemarkers['Profile'].url | escape }}">{{ snippets["Profile Link Text"] | default:resx["Profile_Text"] | escape }}</a></li>
+            <li role="none"><a role="menuitem" aria-label="{{ snippets["Profile Link Text"] | default:resx["Profile_Text"] | escape }}" href="/user-profile">{{ snippets["Profile Link Text"] | default:resx["Profile_Text"] | escape }}</a></li>
             {% endif %}
             <li class="divider" role="separator" aria-hidden="true"></li>
             <li role="none">

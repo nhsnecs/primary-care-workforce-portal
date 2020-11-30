@@ -1,3 +1,23 @@
+$.fn.changeElementType = function(newType) {
+    var newElements = [];
+    $(this).each(function() {
+        var attrs = {};
+        $.each(this.attributes, function(idx, attr) {
+            attrs[attr.nodeName] = attr.nodeValue;
+        });
+        var newElement = $("<" + newType + "/>", attrs).append($(this).contents());
+        $(this).replaceWith(newElement);
+        newElements.push(newElement);
+
+        // Copy events
+        $.each(this.events, function() {
+            $(newElement).bind(this.type, this.handler);
+        });
+
+    });
+    return $(newElements);
+};
+
 var applyNhsStyling = function () {
 
     $("button.btn, a.btn, input[type='button'].btn")
@@ -8,11 +28,6 @@ var applyNhsStyling = function () {
 
     $("input[type='text'], input[type='number'], input[type='email'], input[type='password']")
         .addClass("nhsuk-input");
-
-    /*
-    $("input[type='checkbox']")
-        .addClass("nhsuk-checkboxes__input");
-    */
 
     $("select")
         .addClass("nhsuk-select");
@@ -27,11 +42,6 @@ var applyNhsStyling = function () {
     $("legend")
         .removeClass("section-title")
         .addClass("nhsuk-fieldset__legend nhsuk-fieldset__legend--l");
-
-    /*
-    $(".section")
-        .addClass("nhsuk-form-group");
-    */
 
     $("label")
         .not(".radio-label")
@@ -71,6 +81,21 @@ var applyNhsStyling = function () {
 
     // Add required to email on signin page
     $("label[for='Email']").addClass("required");
+
+    // Tweak to styling on register tab
+    $("label[for='ConfirmPasswordTextBox']").css("padding-left", 0);
+    $("input[type='submit'].btn")
+        .removeClass("btn-primary")
+        .removeClass("btn-default")
+        .removeClass("btn")
+        .addClass("nhsuk-button");
+
+    // a11y fixes (from SiteImprove)
+    $("a[role='tab']").each(function (index) {
+        //$(this).attr("aria-selected", null);
+        $(this).attr("role", null);
+        $(this).parent().attr("role", "tab");
+    });
 
 };
 

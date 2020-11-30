@@ -1,12 +1,16 @@
-div.col-md-4 {
-    display: none;
+table[role='presentation'] {
+    margin-bottom: 12px !important;
 }
-h1 {
-    margin-bottom: 0 !important;
+
+table[role='presentation'] tr {
+    height: auto !important;
 }
-div.page-heading {
-    padding-bottom: 0 !important;
+
+table[role='presentation'] td {
+    padding-top: 0 !important;
+    height: auto !important;
 }
-div.page-header {
-    display: none;
+
+.launchentitylookup {
+    height: 40px !important;s
 }

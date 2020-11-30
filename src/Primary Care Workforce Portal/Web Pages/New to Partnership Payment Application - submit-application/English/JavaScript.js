@@ -8,6 +8,10 @@ $(document).ready(function () {
         .prop("type", "number")
         .addClass("nhsuk-input--width-3");
 
+    $("#necs_otherprofession")
+        .parent()
+        .addClass("nhsuk-input--width-20");
+
     $("#necs_gmcnumber, #necs_nmcpi, #necs_registrationnumber")
         .addClass("nhsuk-input--width-10");
 
@@ -81,7 +85,7 @@ $(document).ready(function () {
 
 // Move Sessions guidance
     var sessions = $("#sessions-guidance").detach();
-    $('#necs_clinicalsessionsweekaverage').closest(".control").append(sessions);
+    $('#necs_clinicalsessionsweekaverage').closest(".control").prepend(sessions);
     $('#sessions-guidance').show();
 
 });

@@ -1,35 +1,30 @@
 {% include 'snippet' snippet_name: 'NECS_N2PP_SetupVariables.js' %}<p>A claim should be completed and submitted every month by:</p>
 <ul>
-  <li>PCNs claiming workforce payments under the Network Contract Directed Enhanced Service (DES) in 2020/21; and</li>
-  <li>Commissioners (CCGs/STPs/ICSs) reviewing and approving the claims</li>
+  <li style="font-size: 16px; margin-bottom: 0px;">PCNs claiming workforce payments under the Network Contract Directed Enhanced Service (DES) in 2020/21; and</li>
+  <li style="font-size: 16px; margin-bottom: 0px;">Commissioners (CCGs/STPs/ICSs) reviewing and approving the claims</li>
 </ul>
 <p>PCN reimbursement claims must only be for staff additional to the 2019-20 PCN baseline. Where a baseline has not been established, reimbursement claims are still to be for new additional staff recruited during 2019-20 onwards</p>
 <ul>
-  <li>As part of local due diligence, PCNs may be required by commissioners to demonstrate that claims being made are for new additional staff roles beyond this baseline</li>
-  <li>Claims are only applicable following the start of employment and to cover the period of employment (i.e. whilst the individual is in post), providing the employee is not in the baseline as at 31 March 2019</li>
-  <li>Once all claims have been approved, the commissioner must keep a record of each approved claim for audit purposes</li>
+  <li style="font-size: 16px; margin-bottom: 0px;">As part of local due diligence, PCNs may be required by commissioners to demonstrate that claims being made are for new additional staff roles beyond this baseline</li>
+  <li style="font-size: 16px; margin-bottom: 0px;">Claims are only applicable following the start of employment and to cover the period of employment (i.e. whilst the individual is in post), providing the employee is not in the baseline as at 31 March 2019</li>
+  <li style="font-size: 16px; margin-bottom: 0px;">Once all claims have been approved, the commissioner must keep a record of each approved claim for audit purposes</li>
 </ul>
 <div class="row sectionBlockLayout" style="display: flex; flex-wrap: wrap; padding: 8px; margin: 0px;">{% entityform name: 'ARRS Claim (Create Claim)' %}</div>
-
-
 <!-- Declaration -->
 <div id="confirmation-container" class="col-sm-12 nhsuk-form-group">
-  <fieldset class="nhsuk-fieldset" aria-describedby="declaration-text">
+  <fieldset aria-describedby="declaration-text" class="nhsuk-fieldset">
     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
-        Declaration
+      Declaration
     </legend>
-    <div class="nhsuk-hint" id="declaration-text col-sm-12">
-        <p>This claim form has been processed in accordance with the Network Contract Directed Enhanced Service (DES) Specification.</p>
-        <p>The PCN's Core Network Practices confirm that the information provided in this document is correct and complete to the best of our knowledge. We confirm that the claims made in this form adhere to the rules set out in Sections 6, 9.1, 9.2, and 9.10 of the Network Contract DES Specification: <a href='https://www.england.nhs.uk/gp/investment/gp-contract/' target='_blank'>https://www.england.nhs.uk/gp/investment/gp-contract/</a></p> 
-        <p>The PCN's Core Network Practices understand that if any information is withheld, false or misleading, we may be asked to rectify these errors and return funding in accordance with the rules set out under the Network Contract Directed Enhanced Service (DES) Specification.</p>
+    <div class="nhsuk-hint">
+      <p>This claim form has been processed in accordance with the Network Contract Directed Enhanced Service (DES) Specification.</p>
+      <p>The PCN's Core Network Practices confirm that the information provided in this document is correct and complete to the best of our knowledge. We confirm that the claims made in this form adhere to the rules set out in Sections 6, 9.1, 9.2, and 9.10 of the Network Contract DES Specification: <a href="https://www.england.nhs.uk/gp/investment/gp-contract/" target="_blank">https://www.england.nhs.uk/gp/investment/gp-contract/</a></p>
+      <p>The PCN's Core Network Practices understand that if any information is withheld, false or misleading, we may be asked to rectify these errors and return funding in accordance with the rules set out under the Network Contract Directed Enhanced Service (DES) Specification.</p>
     </div>
     <div id="confirmation-checkboxes" class="nhsuk-checkboxes">
-      <div class="nhsuk-checkboxes__item">
-        <input class="nhsuk-checkboxes__input" id="confirm-yes" name="confirm-yes" type="checkbox">
-        <label class="nhsuk-label nhsuk-checkboxes__label" for="confirm-yes">
+      <div class="nhsuk-checkboxes__item"><input id="confirm-yes" name="confirm-yes" type="checkbox" class="nhsuk-checkboxes__input"><label for="confirm-yes" class="nhsuk-label nhsuk-checkboxes__label">
           I confirm
-        </label>
-      </div>
+        </label></div>
     </div>
   </fieldset>
 </div>
