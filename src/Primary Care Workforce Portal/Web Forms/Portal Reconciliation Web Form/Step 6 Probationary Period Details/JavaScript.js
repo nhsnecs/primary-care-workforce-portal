@@ -14,7 +14,6 @@ $("table[role='presentation']").each(function(index) {
     $("#no").click(function () {
         $("table[role='presentation']").hide();
         $("#necs_probationaryormutualassessmentperiod").val("348730001");
-        $("#NextButton").click();
     });
 
 });

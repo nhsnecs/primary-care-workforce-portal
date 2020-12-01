@@ -54,6 +54,7 @@ var showRelevantFields = function (selectedOption) {
     switch (selectedOption) {
         case "348730000": // I have become a partner at a different practice
             $("#necs_odscode").closest("td").show();
+            $("#necs_nameofpractice").closest("td").show();
             $("#necs_practicemanagername").closest("td").show();
             $("#necs_practicemanageremailaddress").closest("td").show();
             $("#necs_datemovedtonewpractice_datepicker_description").closest("tr").show();
@@ -156,7 +157,7 @@ $("table[role='presentation']").each(function(index) {
         description = "Complete this section only if you have either moved practices but continued in a partnership role, or have left your partnership altogether";
         break;
     case 2:
-        description = "If you joined the New to Partnership Payment scheme during your probationary period do you need to update any of the details that we hold on record for you in relation to this, for example if your probationary period has been extended or has been completed and you are now a substantive partner?";
+        description = "Please provide details of the changes you wish to make to your probationary period";
         break;
     case 3:
         description = "Have you have continued to work as a partner but no longer hold an equity share?";
@@ -168,10 +169,10 @@ $("table[role='presentation']").each(function(index) {
         description = "Have there been any changes to your agreed number of working sessions that we hold on record for you?";
         break;
     case 6:
-        description = "Are you planning to or have taken a prolonged period of absence from work, for example a sabbatical? This does not include annual leave, maternity / paternity / adoption / parental leave and/or long-term sickness.";
+        description = "Are you planning or have taken a prolonged period of absence? (excluding: annual leave maternity / paternity / adoption leave and long term sickness) please provide details on the reason";
         break;
     case 7:
-        description = "If you have any other changes you wish to make to your personal or employment details that are not included on the other sections of this form, please document them here.";
+        description = "If you have any other changes you wish to make, please detail them here";
         break;
     }
     $(this).parent().prepend('<span class="nhsuk-hint">' + description + '</span>');
@@ -217,7 +218,7 @@ var rules = {
     necs_extensionenddate_date_input: { required: false },
     necs_extensionchangedate_date_input: { required: function () { return $("#necs_extensionenddate_date_input").val() != ""; } },
     necs_newcontracttype: {required: contractHasChanged },
-    necs_newcontractenddate_date_input: {required: contractHasChanged },
+    necs_newcontractenddate_date_input: {required: false },
     necs_contractchangedate_date_input: {required: contractHasChanged },
 
     necs_datewhenleftpartnershiprole_date_input: { required: true, minimumDate: minimumDate, maximumDate: maximumDate },

@@ -18,19 +18,25 @@ $(document).ready(function () {
     });
 
 // Monthly fees only available for 'Social Prescribing Link Worker' (57ab0870-6eec-ea11-a815-000d3a86a78c)
-    var showHideMonthlyFees = function () {
+    var showHideMonthlyFeesAndPharmacyFields = function () {
         var selected = $("#necs_professionid option:selected").val();
         if (selected == '57ab0870-6eec-ea11-a815-000d3a86a78c') {
             $("#necs_monthlyfees").closest("tr").show();
         } else {
             $("#necs_monthlyfees").closest("tr").hide();
         }
+        // Clinical pharmacist section
+        if (selected == '4e48fb82-6dec-ea11-a815-0022481a236c' || selected == "14103721-6eec-ea11-a815-000d3a86a78c") {
+            $("table[data-name='tab_details_section_pharmacy']").closest("fieldset").show();
+        } else {
+            $("table[data-name='tab_details_section_pharmacy']").closest("fieldset").hide();
+        }
     };
     $("#necs_monthlyfees").closest("tr").hide();
     $("#necs_professionid").on("change", function () {
-        showHideMonthlyFees();
+        showHideMonthlyFeesAndPharmacyFields();
     });
-    showHideMonthlyFees();
+    showHideMonthlyFeesAndPharmacyFields();
 
 // Setup Validation
     var rules = { necs_employeeid: null, necs_lefton_date_input: null, necs_totalcost: null, necs_maxreimbursement: null, necs_maxadjustedreimbursement: null };

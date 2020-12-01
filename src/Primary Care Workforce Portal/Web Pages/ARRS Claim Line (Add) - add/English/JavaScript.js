@@ -18,6 +18,7 @@ $(document).ready(function () {
     });
 
 // Monthly fees only available for 'Social Prescribing Link Worker' (57ab0870-6eec-ea11-a815-000d3a86a78c)
+    $("table[data-name='tab_details_section_pharmacy']").closest("fieldset").hide();
     $("#necs_monthlyfees").val("0");
     $("#necs_monthlyfees").closest("tr").hide();
     $("#necs_professionid").on("change", function () {
@@ -27,6 +28,12 @@ $(document).ready(function () {
         } else {
             $("#necs_monthlyfees").closest("tr").hide();
             $("#necs_monthlyfees").val("0");
+        }
+        // Clinical pharmacist section
+        if (selected == '4e48fb82-6dec-ea11-a815-0022481a236c' || selected == "14103721-6eec-ea11-a815-000d3a86a78c") {
+            $("table[data-name='tab_details_section_pharmacy']").closest("fieldset").show();
+        } else {
+            $("table[data-name='tab_details_section_pharmacy']").closest("fieldset").hide();
         }
         $("#necs_employeeid").val($("#necs_professionid option:selected").text() + " 1");
     });
