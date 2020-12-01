@@ -113,7 +113,7 @@ var showRelevantFields = function (selectedOption) {
     var selection = null;
     var sections = [];
     var options = "";
-    $("fieldset").each(function(index) {
+    $("fieldset:not(#confirmation-fieldset)").each(function(index) {
         $(this).hide();
         var title = $(this).find("legend").text();
         if (title) {
@@ -127,6 +127,7 @@ var showRelevantFields = function (selectedOption) {
     sections[0].section.parent().prepend(selectSection);
     sections[0].section.parent().addClass("nhsuk-form-group");
     selectSection.change(function () {
+        $("#confirmation-container").show();
         var selectedTitle = $(this).val();
         if (selectedTitle != "") {
             $("#sections").removeClass("nhsuk-select--error");
@@ -177,6 +178,22 @@ $("table[role='presentation']").each(function(index) {
 
 });
 
+// Declaration -> enable/disable submit
+    var enableDisableSubmitButton = function () {
+        var confirmed = $("#confirm-yes").prop("checked");
+        $("#InsertButton").attr("disabled", !confirmed);
+    };
+
+// Move declaration before buttons
+    var confirmationContainer = $("#confirmation-container");
+    $(".actions").prepend(confirmationContainer);
+    $("#confirmation-container").hide();
+
+// Confirm declaration sets enabled
+    $("#confirm-yes").change(function () {
+        enableDisableSubmitButton();
+    });
+    enableDisableSubmitButton();
 
 // Setup Validation
 var minimumDate = dayjs(new Date(2020, 0, 1));

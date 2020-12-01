@@ -49,6 +49,7 @@ $(document).ready(function () {
         $("div[data-name='tab_application']").show();
         $(".cell.file-cell").show();
         $("#InsertButton").show();
+        $("#confirmation-container").show();
     });
 
 // Reload selection (if set)
@@ -87,6 +88,23 @@ $(document).ready(function () {
     var sessions = $("#sessions-guidance").detach();
     $('#necs_clinicalsessionsweekaverage').closest(".control").prepend(sessions);
     $('#sessions-guidance').show();
+
+// Declaration -> enable/disable submit
+    var enableDisableSubmitButton = function () {
+        var confirmed = $("#confirm-yes").prop("checked");
+        $("#InsertButton").attr("disabled", !confirmed);
+    };
+
+// Move declaration before buttons
+    var confirmationContainer = $("#confirmation-container");
+    $(".form-custom-actions").prepend(confirmationContainer);
+    $("#confirmation-container").hide();
+
+// Confirm declaration sets enabled
+    $("#confirm-yes").change(function () {
+        enableDisableSubmitButton();
+    });
+    enableDisableSubmitButton();
 
 });
 

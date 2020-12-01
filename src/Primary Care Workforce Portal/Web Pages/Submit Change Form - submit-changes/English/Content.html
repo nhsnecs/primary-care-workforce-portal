@@ -12,3 +12,20 @@
   var email = '{{ user.emailaddress1 }}';
 </script>
 <p><span class="nhsuk-hint">As part of the New to Partnership Payment Scheme you are required to advise us of any changes to your personal or employment circumstances. The information you provide will be utilised to update the details we currently hold about you and ascertain whether any amendments are necessary in relation to your sum received, or ongoing participation in the scheme.</span></p>{% entityform name: 'Submit Change Form' %}
+
+<!-- Declaration -->
+<div id="confirmation-container" class="col-sm-12 nhsuk-form-group">
+  <fieldset id="confirmation-fieldset" class="nhsuk-fieldset" aria-describedby="declaration-text">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+        Declaration
+    </legend>
+    <div id="confirmation-checkboxes" class="nhsuk-checkboxes">
+      <div class="nhsuk-checkboxes__item">
+        <input class="nhsuk-checkboxes__input" id="confirm-yes" name="confirm-yes" type="checkbox">
+        <label class="nhsuk-label nhsuk-checkboxes__label" for="confirm-yes">
+            I declare that the information provided above is true and accurate
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>

@@ -70,6 +70,31 @@
 {% entityform name: 'Submit Application' %}
 
 
+<!-- Declaration -->
+<div id="confirmation-container" class="col-sm-12 nhsuk-form-group">
+  <fieldset class="nhsuk-fieldset" aria-describedby="declaration-text">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+        Declaration
+    </legend>
+    <div class="nhsuk-hint" id="declaration-text col-sm-12">
+        I declare that:
+        <ul>
+            <li>I have not been a partner in a general practice in England previously;</li>
+            <li>I have not previously received any similar grant or incentive payment; and</li>
+            <li>I will be actively involved in the delivery of clinical services to patients.</li>
+        </ul>
+    </div>
+    <div id="confirmation-checkboxes" class="nhsuk-checkboxes">
+      <div class="nhsuk-checkboxes__item">
+        <input class="nhsuk-checkboxes__input" id="confirm-yes" name="confirm-yes" type="checkbox">
+        <label class="nhsuk-label nhsuk-checkboxes__label" for="confirm-yes">
+            I agree to accept the terms and conditions of the payment, and agree to return the grant [paid to me by the practice], in part or in full if my circumstances change that affect my eligibility, including if I cease to be a partner in this or another practice during the five-year period.
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
 <script>
 $(document).ready(function () {
 
