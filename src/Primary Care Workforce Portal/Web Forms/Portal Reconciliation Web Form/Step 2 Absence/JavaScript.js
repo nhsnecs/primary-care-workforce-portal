@@ -13,7 +13,6 @@ $("table[role='presentation']").each(function(index) {
     $("#no").click(function () {
         $("#necs_prolongerperiodsofabsence").val("348730001");
         $("table[role='presentation']").hide();
-        $("#NextButton").click();
     });
     
     var absence = $("#necs_prolongerperiodsofabsence").val();

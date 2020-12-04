@@ -83,6 +83,8 @@ var setupValidationForForm = function (rules, messages) {
     var formValidator = validateForm(rulesWithNames, messages);
 
     // Hook into existing validation
+
+    // Entity forms
     if (typeof (entityFormClientValidate) != 'undefined') {
         var originalValidationFunction = entityFormClientValidate;
         if (originalValidationFunction && typeof (originalValidationFunction) == "function") {
@@ -99,5 +101,17 @@ var setupValidationForForm = function (rules, messages) {
             };
         }
     }
+
+    // Web forms
+    webFormClientValidate = function() {
+        var formValid = $("form").valid();
+        if (!formValid) {
+            var container = $(".nhsuk-select--error").first().closest("tr");
+            if (container) {
+                $([document.documentElement, document.body]).animate({ scrollTop: container.offset().top }, 1000);
+            }
+        }
+        return formValid;
+    };
 
 };

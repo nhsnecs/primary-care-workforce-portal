@@ -7,6 +7,11 @@ $(document).ready(function() {
     $("#necs_minimum2sessionperweek").parent().addClass("nhsuk-input--width-5");
     $("#necs_revisedagreedsessionperweek").attr("type", "number");
     $("#necs_revisedagreedsessionperweek").addClass("nhsuk-input--width-5");
+    $("#necs_agreedsessionschanged").parent().addClass("nhsuk-input--width-10");
+    $("#necs_odscode").addClass("nhsuk-input--width-5");
+    $("#necs_nameofpractice").addClass("nhsuk-input--width-20");
+    $("#necs_practicemanagername").addClass("nhsuk-input--width-20");
+    $("#necs_practicemanageremailaddress").addClass("nhsuk-input--width-20");
 
 // Personal details styling
     $("#necs_firstnames, #necs_surname, #necs_personalstreetbuilding, #necs_personaltownorcity")

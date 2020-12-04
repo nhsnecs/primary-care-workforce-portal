@@ -96,6 +96,8 @@ var applyNhsStyling = function () {
         $(this).attr("role", null);
         $(this).parent().attr("role", "tab");
     });
+    $(".help-block").addClass("nhsuk-hint"); // Contrast
+        
 
 };
 
