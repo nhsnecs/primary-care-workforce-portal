@@ -11,12 +11,16 @@
   var mobileno = '{{ user.mobilephone }}';
   var email = '{{ user.emailaddress1 }}';
 </script>
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
 <p><span class="nhsuk-hint">As part of the New to Partnership Payment Scheme you are required to advise us of any changes to your personal or employment circumstances. The information you provide will be utilised to update the details we currently hold about you and ascertain whether any amendments are necessary in relation to your sum received, or ongoing participation in the scheme.</span></p>{% entityform name: 'Submit Change Form' %}
 
 <!-- Declaration -->
 <div id="confirmation-container" class="col-sm-12 nhsuk-form-group">
   <fieldset id="confirmation-fieldset" class="nhsuk-fieldset" aria-describedby="declaration-text">
-    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+    <legend id="confirmation-legend" class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
         Declaration
     </legend>
     <div id="confirmation-checkboxes" class="nhsuk-checkboxes">

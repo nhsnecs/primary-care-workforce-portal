@@ -1,0 +1,11 @@
+.crmEntityFormView .section {
+    margin-bottom: 0 !important;
+}
+
+.select2-container {
+    margin-bottom: 10px !important;
+}
+
+legend:not(#confirmation-legend) {
+    padding-top: 20px !important;
+}

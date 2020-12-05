@@ -2,6 +2,7 @@ $(document).ready(function() {
 
 // Hide yes/no dropdown
     $("#necs_continuedequitysharepartner").closest("tr").hide();
+    $("#confirmation-container").hide();
 
 // Styling
     $("#necs_workingcapacity").parent().addClass("nhsuk-input--width-20");

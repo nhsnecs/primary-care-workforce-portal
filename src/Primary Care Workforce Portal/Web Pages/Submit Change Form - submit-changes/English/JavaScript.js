@@ -128,39 +128,69 @@ var showRelevantFields = function (selectedOption) {
     showContractChangedElements();
 
 // Turn sections into dropdown options
-    var selection = null;
     var sections = [];
     var options = "";
     $("fieldset:not(#confirmation-fieldset)").each(function(index) {
         $(this).hide();
         var title = $(this).find("legend").text();
         if (title) {
-            sections.push({ title: title, section: $(this) });
+            sections.push({ title: title, section: $(this), visible: false });
             options += "<option>" + title + "</option>";
         }
     });
     $("#confirmation-container").hide();
 
 // Section handling
-    var selectSection = $("<legend class='nhsuk-fieldset__legend nhsuk-fieldset__legend--l'>Select what's changed</legend><select id='sections' name='sections' class='form-control picklist nhsuk-select'><option selected value=''>(select an option)</option>" + options + "</select><br/>");
+    var selectSection = $("<legend class='nhsuk-fieldset__legend nhsuk-fieldset__legend--l'>Select what's changed</legend><select id='sections' name='sections' class='form-control picklist nhsuk-select' multiple='multiple'>" + options + "</select><br/>");
     sections[0].section.parent().prepend(selectSection);
     sections[0].section.parent().addClass("nhsuk-form-group");
+    $("#sections").select2({ placeholder: "Select one or more sections" });
+
     selectSection.change(function () {
         $("#confirmation-container").show();
-        var selectedTitle = $(this).val();
-        if (selectedTitle != "") {
-            $("#sections").removeClass("nhsuk-select--error");
+        var selectedTitles = $(this).val();
+        for (var index = 0; index < selectedTitles.length; index++) {
+            var selectedTitle = selectedTitles[index];
+            if (selectedTitle != "") {
+                $("#sections").removeClass("nhsuk-select--error");
+            }
+            var selectedSection = sections.find(function (item) {
+                return item.title == selectedTitle;
+            });
+            if (selectedSection) {
+                selectedSection.section.show();
+                if (!selectedSection.visible) {
+                    selectedSection.visible = true;
+                    $([document.documentElement, document.body]).animate({ scrollTop: selectedSection.section.offset().top }, 1000);
+                }
+            }
         }
+    });
+
+    var isOpen = false;
+    var preventOpen = false;
+    $("#sections").on("select2:unselect", function (e) {
+        preventOpen = !isOpen;
+        var selectedTitle = e.params.data.text;
         var selectedSection = sections.find(function (item) {
             return item.title == selectedTitle;
         });
-        if (selection) {
-            selection.hide();
-        }
         if (selectedSection) {
-            selectedSection.section.show();
-            selection = selectedSection.section;
+            selectedSection.section.hide();
+            selectedSection.visible = false;
         }
+    });
+    $("#sections").on("select2:opening", function (e) {
+        if (preventOpen) {
+            preventOpen = false;
+            return false;
+        }
+    });
+    $("#sections").on("select2:open", function (e) {
+        isOpen = true;
+    });
+    $("#sections").on("select2:close", function (e) {
+        isOpen = false;
     });
 
 // Descriptions

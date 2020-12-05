@@ -40,6 +40,22 @@ $(document).ready(function() {
             $("table[role='presentation']").hide();
     }
 
+// Declaration -> enable/disable submit
+    var enableDisableSubmitButton = function () {
+        var confirmed = $("#confirm-yes").prop("checked");
+        $("#NextButton").attr("disabled", !confirmed);
+    };
+
+// Move declaration before buttons
+    var confirmationContainer = $("#confirmation-container");
+    $(".actions").prepend(confirmationContainer);
+
+// Confirm declaration sets enabled
+    $("#confirm-yes").change(function () {
+        enableDisableSubmitButton();
+    });
+    enableDisableSubmitButton();
+
 // Validation
     var minimumDate = dayjs(new Date(2020, 0, 1));
     var maximumDate = minimumDate.add(1, "year");

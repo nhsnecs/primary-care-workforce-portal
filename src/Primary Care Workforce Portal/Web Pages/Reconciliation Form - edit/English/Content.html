@@ -11,3 +11,24 @@
   var mobileno = '{{ user.mobilephone }}';
   var email = '{{ user.emailaddress1 }}';
 </script>{% webform name: 'Portal Reconciliation Web Form' %}
+
+<!-- Declaration -->
+<div id="confirmation-container" class="col-sm-12 nhsuk-form-group">
+  <fieldset aria-describedby="declaration-text" class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l">
+      Declaration
+    </legend>
+    <div id="confirmation-checkboxes" class="nhsuk-checkboxes">
+      <div class="nhsuk-checkboxes__item"><input id="confirm-yes" name="confirm-yes" type="checkbox" class="nhsuk-checkboxes__input"><label for="confirm-yes" class="nhsuk-label nhsuk-checkboxes__label">
+          I declare that the information provided is true and accurate
+        </label></div>
+    </div>
+  </fieldset>
+</div>
+<script>
+  $(document).ready(function() {
+    if ($("#MessagePanel.alert-success").length > 0) {
+      $("#confirmation-container").hide();
+    }
+  });
+</script>

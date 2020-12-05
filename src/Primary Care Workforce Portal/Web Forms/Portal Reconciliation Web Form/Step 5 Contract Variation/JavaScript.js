@@ -2,6 +2,7 @@ $(document).ready(function() {
 
 // Hide yes/no dropdown
     $("#necs_changestopracticecontract").closest("tr").hide();
+    $("#confirmation-container").hide();
 
 // Styling
     $("#necs_contracttypechanged, #necs_newcontracttype").parent().addClass("nhsuk-input--width-10");
@@ -28,7 +29,9 @@ $(document).ready(function() {
             $("#necs_contractchangedate_date_input").closest("tr").show();
             $("#necs_extensionenddate_date_input").closest("tr").show();
             $("#necs_extensionchangedate_date_input").closest("tr").show();
+            $("#AttachFile").closest(".tr").show();
         } else {
+            $("#AttachFile").closest(".tr").hide();
             $("#necs_newcontracttype").closest("tr").hide();
             $("#necs_newcontractenddate_date_input").closest("tr").hide();
             $("#necs_contractchangedate_date_input").closest("tr").hide();
@@ -85,6 +88,7 @@ $(document).ready(function() {
         necs_newcontracttype: {required: contractHasChanged },
         necs_newcontractenddate_date_input: {required: false },
         necs_contractchangedate_date_input: {required: contractHasChanged },
+        AttachFile: {required: contractHasChanged },
     };
     var messages = {
     };

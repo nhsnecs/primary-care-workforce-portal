@@ -2,6 +2,7 @@ $(document).ready(function() {
 
 // Hide yes/no dropdown
     $("#necs_personaldetailedremainedsame").closest("tr").hide();
+    $("#confirmation-container").hide();
 
 // Personal details styling
     $("#necs_firstnames, #necs_surname, #necs_personalstreetbuilding, #necs_personaltownorcity")

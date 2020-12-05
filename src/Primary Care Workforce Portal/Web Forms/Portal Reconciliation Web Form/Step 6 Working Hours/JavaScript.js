@@ -2,6 +2,7 @@ $(document).ready(function() {
 
 // Hide yes/no dropdown
     $("#necs_agreedsessionschanged").closest("tr").hide();
+    $("#confirmation-container").hide();
 
 // Styling
     $("#necs_howagreedsessionschanged").parent().addClass("nhsuk-input--width-10");

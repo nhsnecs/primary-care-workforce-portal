@@ -2,6 +2,7 @@ $(document).ready(function() {
 
 // Hide yes/no dropdown
     $("#necs_partneratpracticeinn2ppapplication").closest("tr").hide();
+    $("#confirmation-container").hide();
 
 // Styling
     $("#necs_odscode").addClass("nhsuk-input--width-5");
