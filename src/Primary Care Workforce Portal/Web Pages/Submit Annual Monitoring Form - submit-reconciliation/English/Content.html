@@ -1,3 +1,16 @@
+{% assign userId = user.id %}
+<script>
+  var firstnames = '{{ user.firstname }}';
+  var surname = '{{ user.lastname }}';
+  var personalstreetbuilding = '{{ user.address1_line1 }}';
+  var personaltownorcity = '{{ user.address1_city }}';
+  var personalcountycode_name = '{{ user.address1_county }}';
+  var personalpostcode = '{{ user.address1_postalcode }}';
+  var hometel = '{{ user.telephone2 }}';
+  var worktel = '{{ user.telephone1 }}';
+  var mobileno = '{{ user.mobilephone }}';
+  var email = '{{ user.emailaddress1 }}';
+</script>
 {% include 'snippet' snippet_name: 'N2PP Annual Form Script' %}<p>
   As part of the New to Partnership Payment Scheme you are required to complete an annual reconciliation process. You must complete all sections of this form in relation to your past year on the scheme. The information you provide will be utilised to ascertain whether any amendments are necessary in relation to your sum received, or ongoing participation in the scheme. Please note a variation in your agreed sessions may result in a repayment in part or ‘top-up’ of your grant sum.
 </p>

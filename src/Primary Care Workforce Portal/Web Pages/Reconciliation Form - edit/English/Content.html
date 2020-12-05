@@ -1,1 +1,13 @@
-{% webform name: 'Portal Reconciliation Web Form' %}
+{% assign userId = user.id %}
+<script>
+  var firstnames = '{{ user.firstname }}';
+  var surname = '{{ user.lastname }}';
+  var personalstreetbuilding = '{{ user.address1_line1 }}';
+  var personaltownorcity = '{{ user.address1_city }}';
+  var personalcountycode_name = '{{ user.address1_county }}';
+  var personalpostcode = '{{ user.address1_postalcode }}';
+  var hometel = '{{ user.telephone2 }}';
+  var worktel = '{{ user.telephone1 }}';
+  var mobileno = '{{ user.mobilephone }}';
+  var email = '{{ user.emailaddress1 }}';
+</script>{% webform name: 'Portal Reconciliation Web Form' %}

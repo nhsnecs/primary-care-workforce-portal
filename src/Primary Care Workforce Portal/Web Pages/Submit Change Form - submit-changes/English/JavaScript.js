@@ -12,6 +12,10 @@ $(document).ready(function() {
     $("#necs_nameofpractice").addClass("nhsuk-input--width-20");
     $("#necs_practicemanagername").addClass("nhsuk-input--width-20");
     $("#necs_practicemanageremailaddress").addClass("nhsuk-input--width-20");
+    $("#necs_practicestreetbuilding").addClass("nhsuk-input--width-20");
+    $("#necs_practicetownorcity").addClass("nhsuk-input--width-20");
+    $("#necs_practicecountycode_name").parent().addClass("nhsuk-input--width-20");
+    $("#necs_practicepostcode").addClass("nhsuk-input--width-10");
 
 // Personal details styling
     $("#necs_firstnames, #necs_surname, #necs_personalstreetbuilding, #necs_personaltownorcity")
@@ -50,6 +54,10 @@ var hideAllFields = function () {
     $("#necs_practicepostcode").closest("td").hide();
     $("#necs_practicemanagername").closest("td").hide();
     $("#necs_practicemanageremailaddress").closest("td").hide();
+    $("#necs_practicestreetbuilding").closest("td").hide();
+    $("#necs_practicetownorcity").closest("td").hide();
+    $("#necs_practicecountycode_name").closest("td").hide();
+    $("#necs_practicepostcode").closest("td").hide();
     $("#necs_datemovedtonewpractice_datepicker_description").closest("tr").hide();
     $("#necs_datewhenleftpartnershiprole_datepicker_description").closest("tr").hide();
 };
@@ -62,6 +70,10 @@ var showRelevantFields = function (selectedOption) {
             $("#necs_nameofpractice").closest("td").show();
             $("#necs_practicemanagername").closest("td").show();
             $("#necs_practicemanageremailaddress").closest("td").show();
+            $("#necs_practicestreetbuilding").closest("td").show();
+            $("#necs_practicetownorcity").closest("td").show();
+            $("#necs_practicecountycode_name").closest("td").show();
+            $("#necs_practicepostcode").closest("td").show();
             $("#necs_datemovedtonewpractice_datepicker_description").closest("tr").show();
             $("#necs_datewhenleftpartnershiprole_datepicker_description").closest("tr").show();
             break;
@@ -127,6 +139,7 @@ var showRelevantFields = function (selectedOption) {
             options += "<option>" + title + "</option>";
         }
     });
+    $("#confirmation-container").hide();
 
 // Section handling
     var selectSection = $("<legend class='nhsuk-fieldset__legend nhsuk-fieldset__legend--l'>Select what's changed</legend><select id='sections' name='sections' class='form-control picklist nhsuk-select'><option selected value=''>(select an option)</option>" + options + "</select><br/>");
