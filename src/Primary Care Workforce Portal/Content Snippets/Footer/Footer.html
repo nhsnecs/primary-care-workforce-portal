@@ -2,75 +2,117 @@
 <div class="modal fade" id="odsLookupModal">
     <div class="modal-lg modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header"><button aria-label="Close" class="form-close" data-dismiss="modal" tabindex="0" title="Close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button><h1 class="modal-title" title="Lookup records">Lookup NHS Organisation</h1></div>
-            <div class="modal-body">
-    <div id="odsToolbar" class="view-toolbar grid-actions clearfix"><div class="pull-right toolbar-actions"><div class="input-group pull-left view-search entitylist-search"><input id="odsSearchCriteria" placeholder="ODS Code" aria-label="Enter ODS code to search for" title="Enter ODS code to search for" class="query form-control"><div class="input-group-btn" role="presentation"><button id="odsSearch" type="button" aria-label="Search Results" title="Search Results" class="btn btn-default"><span class="sr-only">Search Results</span><span class="fa fa-search"></span></button></div></div></div></div>
-    <div id="odsGrid">
-    </div>
+            <div class="modal-header"><button aria-label="Close" class="form-close" data-dismiss="modal" tabindex="0" title="Close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h1 class="modal-title" title="Lookup records">Lookup NHS Organisation</h1>
             </div>
-   <div class="modal-footer">
-    <button id="odsSelect" aria-label="Select" class="primary btn btn-primary" data-dismiss="modal" tabindex="0" title="Select" type="button" disabled="">Select</button>
-    <button aria-label="Cancel" class="cancel btn btn-default" data-dismiss="modal" tabindex="0" title="Cancel" type="button">Cancel</button>
-   </div>
+            <div class="modal-body">
+                <div id="odsToolbar" class="view-toolbar grid-actions clearfix">
+                    <div class="pull-right toolbar-actions">
+                        <div class="input-group pull-left view-search entitylist-search"><input id="odsSearchCriteria" placeholder="ODS Code" aria-label="Enter ODS code to search for" title="Enter ODS code to search for" class="query form-control">
+                            <div class="input-group-btn" role="presentation"><button id="odsSearch" type="button" aria-label="Search Results" title="Search Results" class="btn btn-default"><span class="sr-only">Search Results</span><span class="fa fa-search"></span></button></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="odsGrid">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="odsSelect" aria-label="Select" class="primary btn btn-primary" data-dismiss="modal" tabindex="0" title="Select" type="button" disabled="">Select</button>
+                <button aria-label="Cancel" class="cancel btn btn-default" data-dismiss="modal" tabindex="0" title="Cancel" type="button">Cancel</button>
+            </div>
         </div>
     </div>
 </div>
 <!-- ODS Lookup Script -->
 <script>
-    $(function() {
-  var caller$, lastCode, odsGrid$ = $('#odsGrid'), odsSearchCriteria$ = $('#odsSearchCriteria');
+    $(function () {
+        var caller$, lastCode, odsGrid$ = $('#odsGrid'), odsSearchCriteria$ = $('#odsSearchCriteria');
+        var address, telephone;
 
-  $('#odsLookupModal').on('show.bs.modal', function (event) {
-   odsGrid$.empty();
-   odsSearchCriteria$.val('');
-   caller$ = $(event.relatedTarget);
-  })
+        $('#odsLookupModal').on('show.bs.modal', function (event) {
+            address = null;
+            telephone = null;
+            odsGrid$.empty();
+            odsSearchCriteria$.val('');
+            caller$ = $(event.relatedTarget);
+        })
 
-  $('#odsSearch').click(function() {
-   var odsToVerify = odsSearchCriteria$.val();
-   $('#odsSelect').attr('disabled', 'disabled');
-   lastCode = null;
-   odsGrid$.empty();
-   $.ajax({
-    url: 'https://directory.spineservices.nhs.uk/ORD/2-0-0/organisations/' + odsToVerify + '?',
-    dataType: 'json',
-    success: function(data) {
-     var fullAddress = '';
-     for (var key in data.Organisation.GeoLoc.Location) {
-      fullAddress += (data.Organisation.GeoLoc.Location[key] + '<br/>');
-     }
-     lastCode = data.Organisation.OrgId.extension;
-     odsGrid$.append('<h3>' + data.Organisation.Name + '</h3><hr><div class="row"><div class="col-md-3"><label>Address:</label></div><div class="col-md-9">' + fullAddress + '</div></div>');
-     $('#odsSelect').removeAttr('disabled');
-    },
-    error: function(jqXHR) {
-     if (jqXHR.status === 404){
-      odsGrid$.append('<h3 style="color:red">Organisation not found</h3>');
-     } else {
-      odsGrid$.append('<h3 style="color:red">Error in organisation lookup service</h3>');
-     }
-    }
-   });
-  });
-  
-  $('#odsSelect').click(function() {
-   if (caller$ && caller$.length) {
-    caller$.parent().parent().children('input[type=text]').val(lastCode);
-   }
-  });
-  
-        $('#necs_practiceodscode, #necs_pcnodscode, #necs_ccgodscode').each(function() {
-   var odsCode$ = $(this);
+        $('#odsSearch').click(function () {
+            var odsToVerify = odsSearchCriteria$.val();
+            $('#odsSelect').attr('disabled', 'disabled');
+            lastCode = null;
+            odsGrid$.empty();
+            $.ajax({
+                url: 'https://directory.spineservices.nhs.uk/ORD/2-0-0/organisations/' + odsToVerify + '?',
+                dataType: 'json',
+                success: function (data) {
+                    var fullAddress = '';
+                    for (var key in data.Organisation.GeoLoc.Location) {
+                        fullAddress += (data.Organisation.GeoLoc.Location[key] + '<br/>');
+                    }
+                    address = data.Organisation.GeoLoc.Location;
+                    if (data.Organisation.Contacts && data.Organisation.Contacts.Contact) {
+                        telephone = data.Organisation.Contacts.Contact[0].value;
+                    } else {
+                        telephone = null;
+                    }
+                    lastCode = data.Organisation.OrgId.extension;
+                    odsGrid$.append('<h3>' + data.Organisation.Name + '</h3><hr><div class="row"><div class="col-md-3"><label>Address:</label></div><div class="col-md-9">' + fullAddress + '</div></div>');
+                    $('#odsSelect').removeAttr('disabled');
+                },
+                error: function (jqXHR) {
+                    if (jqXHR.status === 404) {
+                        odsGrid$.append('<h3 style="color:red">Organisation not found</h3>');
+                    } else {
+                        odsGrid$.append('<h3 style="color:red">Error in organisation lookup service</h3>');
+                    }
+                }
+            });
+        });
+
+        var setInputValueIfEmpty = function (id, value) {
+            var existingValue = $("#" + id).val();
+            if (!existingValue || existingValue.length == 0) {
+                $("#" + id).val(value);
+            }
+        }
+
+        var setAddress = function () {
+            setInputValueIfEmpty("address1_line1", address.AddrLn1 + (address.AddrLn2 ? ", " + address.AddrLn2 : ""));
+            setInputValueIfEmpty("address1_city", address.Town);
+            setInputValueIfEmpty("address1_county", address.County);
+            setInputValueIfEmpty("address1_postalcode", address.PostCode);
+            setInputValueIfEmpty("address1_telephone1", telephone);
+        }
+
+        $('#odsSelect').click(function () {
+            if (caller$ && caller$.length) {
+                caller$.parent().parent().children('input[type=text]').val(lastCode);
+                // Set address if on profile page
+                if (window.location.href.contains("profile")) {
+                    // What's the label for this popup?
+                    var label = caller$.closest("fieldset").find("legend").text();
+                    var profession = $("#necs_profession option:selected").text();
+                    if (profession == label) {
+                        setAddress();
+                    } else if (label == "Practice") {
+                        setAddress();
+                    }
+                }
+            }
+        });
+
+        $('#necs_practiceodscode, #necs_pcnodscode, #necs_ccgodscode').each(function () {
+            var odsCode$ = $(this);
             var controlDiv$ = odsCode$.parent();
             controlDiv$.append('<div class="input-group"></div>');
             var inputGroup$ = controlDiv$.children('div.input-group');
             odsCode$.prop('readonly', true);
             inputGroup$.append(odsCode$, '<div class="input-group-btn"><button type="button" class="btn btn-default launchentitylookup" title="Launch ODS lookup" aria-label="Launch ODS lookup" data-toggle="modal" data-target="#odsLookupModal"><span class="sr-only">Launch ODS lookup modal</span><span class="fa fa-search" aria-hidden="true"></span></button></div>')
-  });
+        });
 
     });
 </script>
 <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.1/jquery.validate.js" crossorigin="anonymous"></script>
 <script src="/nhsuk-applystyles.js"></script>
 <script src="/validation.js"></script>
-

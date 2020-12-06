@@ -18,7 +18,9 @@ $(document).ready(function () {
     }
 
 // Setup Validation
-    var rules = {};
+    var rules = {
+        necs_amount: { number: true, max: 3000, min: 0 }
+    };
     setupValidationForForm(rules);
 
 });

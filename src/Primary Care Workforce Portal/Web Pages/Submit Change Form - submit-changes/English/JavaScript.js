@@ -279,6 +279,8 @@ var rules = {
     necs_mobileno: { required: false },
     necs_email: { required: false },
     
+    necs_revisedagreedsessionperweek: { digits: true, max: 9 },
+
     necs_extensionenddate_date_input: { required: false },
     necs_extensionchangedate_date_input: { required: function () { return $("#necs_extensionenddate_date_input").val() != ""; } },
     necs_newcontracttype: {required: contractHasChanged },

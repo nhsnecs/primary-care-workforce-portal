@@ -1,5 +1,8 @@
 $(document).ready(function () {
 
+// Tooltip
+    $("#necs_profession").attr("title", "Select your profession / organisational role");
+
 // Styling
     $("#address1_line1, #address1_city, #address1_county")
         .addClass("nhsuk-input--width-20");

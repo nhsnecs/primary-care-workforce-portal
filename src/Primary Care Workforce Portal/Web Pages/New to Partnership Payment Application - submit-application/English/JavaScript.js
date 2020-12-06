@@ -55,9 +55,9 @@ $(document).ready(function () {
 // Reload selection (if set)
     var selectedOption = $("#necs_applicationfrom").val();
     switch (selectedOption) {
-        case 348730000: $("#gp").trigger("click"); break;
-        case 348730001: $("#nurse").trigger("click"); break;
-        case 348730002: $("#other").trigger("click"); break;
+        case 348730000: $("#gp").click(); break;
+        case 348730001: $("#nurse").click(); break;
+        case 348730002: $("#other").click(); break;
     }
     $("#necs_applicationfrom").closest("fieldset").hide();
 
@@ -73,6 +73,7 @@ $(document).ready(function () {
     $("#necs_sessionincreasedsincepartnership_0").click(function () {
         $("#necs_sessionincreasednumber_label").parent().parent().hide();
         $("#necs_sessionincreasednumber").attr("required", false);
+        $("#necs_sessionincreasednumber").val(null);
     });
     $("#necs_sessionincreasedsincepartnership_1").click(function () {
         $("#necs_sessionincreasednumber_label").parent().parent().show();
@@ -115,5 +116,11 @@ var setFteValue = function (value) {
 };
 
 // Setup Validation
-var rules = { necs_applicant_address_telephone: null, necs_applicant_address_mobilephone: null };
+var rules = {
+    AttachFile: "required",
+    necs_fulltimeequivalent: { required: true, number: true, max: 1.0, min: 0.0 },
+    necs_clinicalsessionsweekaverage: { required: true, digits: true, max: 9 },
+    necs_applicant_address_telephone: null,
+    necs_applicant_address_mobilephone: null
+};
 setupValidationForForm(rules);
