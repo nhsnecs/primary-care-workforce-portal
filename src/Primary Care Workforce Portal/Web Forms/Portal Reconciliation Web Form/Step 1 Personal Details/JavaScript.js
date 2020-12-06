@@ -31,7 +31,7 @@ $(document).ready(function() {
     }, 500);
 
 // Setup Yes/No
-    $("table[role='presentation']").parent().prepend('<span class="boolean-radio"><input id="no" type="radio" name="changed" value="no"><label for="no" class="radio-label">No</label><input id="yes" type="radio" name="changed" value="yes"><label for="yes" class="radio-label">Yes</label></span>');
+    $("table[role='presentation']").parent().prepend('<span class="boolean-radio"><input id="no" type="radio" name="changed" value="no" required="required"><label for="no" class="radio-label">No</label><input id="yes" type="radio" name="changed" value="yes" required="required"><label for="yes" class="radio-label">Yes</label></span>');
     $("table[role='presentation']").parent().prepend('<span class="nhsuk-hint">Have your personal details remained the same since your original partnership application?</span>');
     $("#yes").click(function () {
         $("table[role='presentation']").hide();
@@ -56,6 +56,27 @@ $(document).ready(function() {
         default: // Not set yet
             $("table[role='presentation']").hide();
     }
+
+
+// Validation
+    var rules = {
+        changed: { required: true },
+        necs_firstnames: null,
+        necs_surname: null,
+        necs_personalstreetbuilding: null,
+        necs_personaltownorcity: null,
+        necs_personalpostcode: null,
+        necs_hometel: null,
+        necs_worktel: null,
+        necs_mobileno: null,
+        necs_email: null
+    };
+    var messages = {
+    };
+    setTimeout(function () {
+        setupValidationForForm(rules, messages);
+    }, 500);
+
 
 });
 

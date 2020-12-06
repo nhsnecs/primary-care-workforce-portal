@@ -82,7 +82,7 @@ var showRelevantFields = function (selectedOption) {
     });
 
 // Setup Yes/No
-    $("table[role='presentation']").parent().prepend('<span class="boolean-radio"><input id="no" type="radio" name="changed" value="no"><label for="no" class="radio-label">No</label><input id="yes" type="radio" name="changed" value="yes"><label for="yes" class="radio-label">Yes</label></span>');
+    $("table[role='presentation']").parent().prepend('<span class="boolean-radio"><input id="no" type="radio" name="changed" value="no" required="required"><label for="no" class="radio-label">No</label><input id="yes" type="radio" name="changed" value="yes" required="required"><label for="yes" class="radio-label">Yes</label></span>');
     $("table[role='presentation']").parent().prepend('<span class="nhsuk-hint">Are you still a partner at the practice specified in your New to Partnership Payment Application form?</span>');
     $("#yes").click(function () {
         $("#necs_partnershipstatus").closest("tr").hide();
@@ -117,6 +117,7 @@ var showRelevantFields = function (selectedOption) {
     var minimumDate = dayjs(new Date(2020, 0, 1));
     var maximumDate = minimumDate.add(1, "year");
     var rules = {
+        changed: "required",
         necs_partnershipstatus: "required",
         necs_odscode: "required",
         necs_nameofpractice: "required",

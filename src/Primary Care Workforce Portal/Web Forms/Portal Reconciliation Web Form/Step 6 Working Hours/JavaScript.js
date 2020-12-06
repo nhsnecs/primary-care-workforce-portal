@@ -18,7 +18,7 @@ $(document).ready(function() {
     };
 
 // Setup Yes/No
-    $("table[role='presentation']").parent().prepend('<span class="boolean-radio"><input id="no" type="radio" name="changed" value="no"><label for="no" class="radio-label">No</label><input id="yes" type="radio" name="changed" value="yes"><label for="yes" class="radio-label">Yes</label></span>');
+    $("table[role='presentation']").parent().prepend('<span class="boolean-radio"><input id="no" type="radio" name="changed" value="no" required="required"><label for="no" class="radio-label">No</label><input id="yes" type="radio" name="changed" value="yes" required="required"><label for="yes" class="radio-label">Yes</label></span>');
     $("table[role='presentation']").parent().prepend('<span class="nhsuk-hint">Have there been any changes to your agreed number of working sessions that we hold on record for you?</span>');
     $("#yes").click(function () {
         $("#necs_agreedsessionschanged").val("348730000");
@@ -49,6 +49,7 @@ $(document).ready(function() {
     var minimumDate = dayjs(new Date(2020, 0, 1));
     var maximumDate = minimumDate.add(1, "year");
     var rules = {
+        changed: "required",
         necs_agreedsessionperweek: { required: true, max: 9 },
         necs_howagreedsessionschanged: "required",
         necs_agreedsessionschangedate_date_input: "required",

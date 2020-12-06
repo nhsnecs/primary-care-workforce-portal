@@ -13,7 +13,7 @@ $(document).ready(function() {
     };
 
 // Setup Yes/No
-    $("table[role='presentation']").parent().prepend('<span class="boolean-radio"><input id="no" type="radio" name="changed" value="no"><label for="no" class="radio-label">No</label><input id="yes" type="radio" name="changed" value="yes"><label for="yes" class="radio-label">Yes</label></span>');
+    $("table[role='presentation']").parent().prepend('<span class="boolean-radio"><input id="no" type="radio" name="changed" value="no" required="required"><label for="no" class="radio-label">No</label><input id="yes" type="radio" name="changed" value="yes" required="required"><label for="yes" class="radio-label">Yes</label></span>');
     $("table[role='presentation']").parent().prepend('<span class="nhsuk-hint">Are you planning to or have taken a prolonged period of absence from work, for example a sabbatical? This does not include annual leave, maternity / paternity / adoption / parental leave and/or long-term sickness.</span>');
     $("#yes").click(function () {
         $("table[role='presentation']").show();
@@ -64,11 +64,21 @@ $(document).ready(function() {
 // Validation
     var minimumDate = dayjs(new Date(2020, 0, 1));
     var maximumDate = minimumDate.add(1, "year");
+    var getFromDateMaximum = function () {
+        var toDate = $("#necs_absentto").val() || maximumDate;
+        return dayjs(toDate);
+    };
+    var getToDateMinimum = function () {
+        var fromDate = $("#necs_absentfrom").val() || minimumDate;
+        return dayjs(fromDate);
+    };
     var rules = {
-        necs_absentfrom_date_input: { required: true, minimumDate: minimumDate, maximumDate: maximumDate },
-        necs_absentto_date_input: { required: true, minimumDate: minimumDate, maximumDate: maximumDate },
+        necs_absentfrom_date_input: { required: true, minimumDate: minimumDate, maximumDate: getFromDateMaximum },
+        necs_absentto_date_input: { required: true, minimumDate: getToDateMinimum, maximumDate: maximumDate },
     };
     var messages = {
+        necs_absentfrom_date_input: { maximumDate: "From date must be before To date" },
+        necs_absentto_date_input: { minimumDate: "To date must be before From date" }
     };
     setTimeout(function () {
         setupValidationForForm(rules, messages);

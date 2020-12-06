@@ -3,6 +3,9 @@ $(document).ready(function () {
 // SiteImprove - Form has no submit button
     $("#InsertButton").prop("type", "submit");
 
+// Remove dash
+    $("div.text-muted[aria-hidden=true]").hide();
+
 // Setup dates
     var today = dayjs().format("DD/MM/YYYY HH:mm");
     var firstOfMonth = dayjs().startOf('month');

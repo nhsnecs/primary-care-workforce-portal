@@ -50,7 +50,7 @@ $(document).ready(function() {
     });
 
 // Add yes/no
-    $("table[role='presentation']").parent().prepend('<span class="boolean-radio"><input id="no" type="radio" name="changed" value="no"><label for="no" class="radio-label">No</label><input id="yes" type="radio" name="changed" value="yes"><label for="yes" class="radio-label">Yes</label></span>');
+    $("table[role='presentation']").parent().prepend('<span class="boolean-radio"><input id="no" type="radio" name="changed" value="no" required="required"><label for="no" class="radio-label">No</label><input id="yes" type="radio" name="changed" value="yes" required="required"><label for="yes" class="radio-label">Yes</label></span>');
     $("table[role='presentation']").parent().prepend('<span class="nhsuk-hint">Have there been any changes to your practice GMS, PMS or APMS contract?</span>');
     $("#yes").click(function () {
         $("table[role='presentation']").show();
@@ -95,6 +95,7 @@ $(document).ready(function() {
         return ($("#necs_contracttypechanged").val() == "348730000");
     };
     var rules = {
+        changed: "required",
         necs_extensionenddate_date_input: { required: false },
         necs_extensionchangedate_date_input: { required: function () { return $("#necs_extensionenddate_date_input").val() != ""; } },
         necs_newcontracttype: {required: contractTypeHasChanged },

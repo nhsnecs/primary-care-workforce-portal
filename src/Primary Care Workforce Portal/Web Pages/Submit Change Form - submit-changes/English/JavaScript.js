@@ -263,6 +263,14 @@ $("table[role='presentation']").each(function(index) {
 // Setup Validation
 var minimumDate = dayjs(new Date(2020, 0, 1));
 var maximumDate = minimumDate.add(1, "year");
+    var getFromDateMaximum = function () {
+        var toDate = $("#necs_absentto").val() || maximumDate;
+        return dayjs(toDate);
+    };
+    var getToDateMinimum = function () {
+        var fromDate = $("#necs_absentfrom").val() || minimumDate;
+        return dayjs(fromDate);
+    };
 var contractHasChanged = function () {
     return $("#necs_contracttypechanged option:selected").val() == "348730000";
 };
@@ -288,13 +296,17 @@ var rules = {
     necs_contractchangedate_date_input: {required: contractHasChanged },
 
     necs_datewhenleftpartnershiprole_date_input: { required: true, minimumDate: minimumDate, maximumDate: maximumDate },
+    necs_absentfrom_date_input: { required: true, minimumDate: minimumDate, maximumDate: getFromDateMaximum },
+    necs_absentto_date_input: { required: true, minimumDate: getToDateMinimum, maximumDate: maximumDate },
     AttachFile: { required: function () { return $("#sections option:selected").text() == "Changes in practice contract"; } }
 };
 var messages = {
     necs_datewhenleftpartnershiprole_date_input: {
         minimumDate: 'Date must be on or after ' + minimumDate.format("DD/MM/YYYY"),
         maximumDate: 'Date must be before ' + maximumDate.format("DD/MM/YYYY"),
-    }
+    },
+    necs_absentfrom_date_input: { maximumDate: "From date must be before To date" },
+    necs_absentto_date_input: { minimumDate: "To date must be before From date" }
 };
 setupValidationForForm(rules, messages);
 

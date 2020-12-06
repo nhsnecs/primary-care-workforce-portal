@@ -30,7 +30,7 @@ $(document).ready(function() {
     };
 
 // Hide table
-    $("table[role='presentation']").parent().prepend('<span class="boolean-radio"><input id="no" type="radio" name="changed" value="no"><label for="no" class="radio-label">No</label><input id="yes" type="radio" name="changed" value="yes"><label for="yes" class="radio-label">Yes</label></span>');
+    $("table[role='presentation']").parent().prepend('<span class="boolean-radio"><input id="no" type="radio" name="changed" value="no" required="required"><label for="no" class="radio-label">No</label><input id="yes" type="radio" name="changed" value="yes" required="required"><label for="yes" class="radio-label">Yes</label></span>');
     $("table[role='presentation']").parent().prepend('<span class="nhsuk-hint">Have you have continued to work as a partner but no longer hold an equity share?</span>');
 
 // Yes/No handlers
@@ -63,6 +63,7 @@ $(document).ready(function() {
     var minimumDate = dayjs(new Date(2020, 0, 1));
     var maximumDate = minimumDate.add(1, "year");
     var rules = {
+        changed: "required",
         necs_agreedsessionperweek: "required",
         necs_howagreedsessionschanged: "required",
         necs_agreedsessionschangedate_date_input: "required",

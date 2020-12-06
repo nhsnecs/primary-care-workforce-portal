@@ -1,15 +1,24 @@
-{% include 'snippet' snippet_name: 'NECS_N2PP_SetupVariables.js' %}<p>A claim should be completed and submitted every month by:</p>
-<ul>
-  <li style="font-size: 16px; margin-bottom: 0px;">PCNs claiming workforce payments under the Network Contract Directed Enhanced Service (DES) in 2020/21; and</li>
-  <li style="font-size: 16px; margin-bottom: 0px;">Commissioners (CCGs/STPs/ICSs) reviewing and approving the claims</li>
-</ul>
-<p>PCN reimbursement claims must only be for staff additional to the 2019-20 PCN baseline. Where a baseline has not been established, reimbursement claims are still to be for new additional staff recruited during 2019-20 onwards</p>
-<ul>
-  <li style="font-size: 16px; margin-bottom: 0px;">As part of local due diligence, PCNs may be required by commissioners to demonstrate that claims being made are for new additional staff roles beyond this baseline</li>
-  <li style="font-size: 16px; margin-bottom: 0px;">Claims are only applicable following the start of employment and to cover the period of employment (i.e. whilst the individual is in post), providing the employee is not in the baseline as at 31 March 2019</li>
-  <li style="font-size: 16px; margin-bottom: 0px;">Once all claims have been approved, the commissioner must keep a record of each approved claim for audit purposes</li>
-</ul>
+{% include 'snippet' snippet_name: 'NECS_N2PP_SetupVariables.js' %}
+
+<details class="nhsuk-details nhsuk-expander">
+  <summary class="nhsuk-details__summary">
+    <span class="nhsuk-details__summary-text">
+      PCN Submission
+    </span>
+  </summary>
+  <div class="nhsuk-details__text">
+    <p>Please submit claim forms and any requested evidence in adherence with the timeline outlined to you.</p>
+    <ul>
+        <li>The commissioner/approver will then review your submission. Payment will be made where and when it is appropriate to do so</li>
+        <li>PCNs must also check the National Workforce Reporting System (NWRS) to ensure the data on NWRS reflects the data submitted in this form</li>
+        <li>PCNs will need to update NWRS if the data does not match this form</li>
+    </ul>
+  </div>
+</details>
+
+<!-- Form -->
 <div class="row sectionBlockLayout" style="display: flex; flex-wrap: wrap; padding: 8px; margin: 0px;">{% entityform name: 'ARRS Claim (Create Claim)' %}</div>
+
 <!-- Declaration -->
 <div id="confirmation-container" class="col-sm-12 nhsuk-form-group">
   <fieldset aria-describedby="declaration-text" class="nhsuk-fieldset">
