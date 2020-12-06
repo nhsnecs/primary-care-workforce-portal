@@ -115,17 +115,27 @@ var showRelevantFields = function (selectedOption) {
 
 // Contract changed events
     var showContractChangedElements = function () {
-        var hasChanged = $("#necs_contracttypechanged option:selected").val() == "348730000";
-        $("#necs_newcontracttype").closest("tr").toggle(!!hasChanged);
-        $("#necs_newcontractenddate_date_input").closest("tr").toggle(!!hasChanged);
-        $("#necs_contractchangedate_date_input").closest("tr").toggle(!!hasChanged);
-        $("#necs_extensionenddate_date_input").closest("tr").toggle(!!hasChanged);
-        $("#necs_extensionchangedate_date_input").closest("tr").toggle(!!hasChanged);
-    }
+        var changes = $("#necs_contracttypechanged").val();
+        if (changes == "348730000") {
+            $("#AttachFile").closest(".tr").show();
+            $("#necs_newcontracttype").closest("tr").show();
+            $("#necs_newcontractenddate_date_input").closest("tr").show();
+            $("#necs_contractchangedate_date_input").closest("tr").show();
+            $("#necs_extensionenddate_date_input").closest("tr").show();
+            $("#necs_extensionchangedate_date_input").closest("tr").show();
+        } else {
+            $("#AttachFile").closest(".tr").hide();
+            $("#necs_newcontracttype").closest("tr").hide();
+            $("#necs_newcontractenddate_date_input").closest("tr").hide();
+            $("#necs_contractchangedate_date_input").closest("tr").hide();
+            $("#necs_extensionenddate_date_input").closest("tr").hide();
+            $("#necs_extensionchangedate_date_input").closest("tr").hide();
+        }
+    };
+    showContractChangedElements();
     $("#necs_contracttypechanged").change(function () {
         showContractChangedElements();
     });
-    showContractChangedElements();
 
 // Turn sections into dropdown options
     var sections = [];
@@ -147,8 +157,14 @@ var showRelevantFields = function (selectedOption) {
     $("#sections").select2({ placeholder: "Select one or more sections" });
 
     selectSection.change(function () {
-        $("#confirmation-container").show();
         var selectedTitles = $(this).val();
+        if (!selectedTitles || selectedTitles.length == 0) {
+            $("#confirmation-container").hide();
+            $("#confirm-yes").prop("checked", false);
+            $("#InsertButton").attr("disabled", true);
+        } else {
+            $("#confirmation-container").show();
+        }
         for (var index = 0; index < selectedTitles.length; index++) {
             var selectedTitle = selectedTitles[index];
             if (selectedTitle != "") {

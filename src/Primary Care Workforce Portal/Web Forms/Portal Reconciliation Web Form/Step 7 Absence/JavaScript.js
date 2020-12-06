@@ -18,6 +18,7 @@ $(document).ready(function() {
     $("#yes").click(function () {
         $("table[role='presentation']").show();
         $("#necs_prolongerperiodsofabsence").val("348730000");
+        $("#necs_submitteddate_date_input").closest("tr").hide();
     });
     $("#no").click(function () {
         $("#necs_prolongerperiodsofabsence").val("348730001");
@@ -52,6 +53,10 @@ $(document).ready(function() {
 
 // Confirm declaration sets enabled
     $("#confirm-yes").change(function () {
+        var nowFull = dayjs().format("YYYY-MM-DDTHH:mm:ss.0000000");
+        var nowFormatted = dayjs().format("YYYY-MM-DD");
+        $("#necs_submitteddate").val(nowFull);
+        $("#necs_submitteddate_date_input").val(nowFormatted);
         enableDisableSubmitButton();
     });
     enableDisableSubmitButton();

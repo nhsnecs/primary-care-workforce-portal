@@ -23,24 +23,30 @@ $(document).ready(function() {
 
 // Contract changed events
     var showContractChangedElements = function () {
-        if ($("#necs_contracttypechanged").val() == 348730000) {
-            $("#necs_newcontracttype").closest("tr").show();
+        var changes = $("#necs_changestopracticecontract").val();
+        if (changes == "348730000") {
+            $("#AttachFile").closest(".tr").show();
             $("#necs_newcontractenddate_date_input").closest("tr").show();
             $("#necs_contractchangedate_date_input").closest("tr").show();
             $("#necs_extensionenddate_date_input").closest("tr").show();
             $("#necs_extensionchangedate_date_input").closest("tr").show();
-            $("#AttachFile").closest(".tr").show();
         } else {
             $("#AttachFile").closest(".tr").hide();
-            $("#necs_newcontracttype").closest("tr").hide();
             $("#necs_newcontractenddate_date_input").closest("tr").hide();
             $("#necs_contractchangedate_date_input").closest("tr").hide();
             $("#necs_extensionenddate_date_input").closest("tr").hide();
             $("#necs_extensionchangedate_date_input").closest("tr").hide();
         }
-    }
+    };
+    var showContractTypeChangedElements = function () {
+        if ($("#necs_contracttypechanged").val() == "348730000") {
+            $("#necs_newcontracttype").closest("tr").show();
+        } else {
+            $("#necs_newcontracttype").closest("tr").hide();
+        }
+    };
     $("#necs_contracttypechanged").change(function () {
-        showContractChangedElements();
+        showContractTypeChangedElements();
     });
 
 // Add yes/no
@@ -50,16 +56,18 @@ $(document).ready(function() {
         $("table[role='presentation']").show();
         $("#necs_changestopracticecontract").val("348730000");
         showContractChangedElements();
+        showContractTypeChangedElements();
     });
     $("#no").click(function () {
         $("table[role='presentation']").hide();
         $("#necs_changestopracticecontract").val("348730001");
         clearAllFields();
         showContractChangedElements();
+        showContractTypeChangedElements();
     });
 
 // Have there been any changes to your practice GMS, PMS or APMS contract?
-    var selectedValue = $("#necs_changestopracticecontract option:selected").val();
+    var selectedValue = $("#necs_changestopracticecontract").val();
     switch (selectedValue) {
         case "348730000": // Yes
             $("#yes").attr("checked", "checked");
@@ -74,18 +82,22 @@ $(document).ready(function() {
     }
     setTimeout(function () {
         showContractChangedElements();
+        showContractTypeChangedElements();
     }, 300);
 
 // Validation
     var minimumDate = dayjs(new Date(2020, 0, 1));
     var maximumDate = minimumDate.add(1, "year");
     var contractHasChanged = function () {
+        return ($("#necs_changestopracticecontract").val() == "348730000");
+    };
+    var contractTypeHasChanged = function () {
         return ($("#necs_contracttypechanged").val() == "348730000");
     };
     var rules = {
         necs_extensionenddate_date_input: { required: false },
         necs_extensionchangedate_date_input: { required: function () { return $("#necs_extensionenddate_date_input").val() != ""; } },
-        necs_newcontracttype: {required: contractHasChanged },
+        necs_newcontracttype: {required: contractTypeHasChanged },
         necs_newcontractenddate_date_input: {required: false },
         necs_contractchangedate_date_input: {required: contractHasChanged },
         AttachFile: {required: contractHasChanged },

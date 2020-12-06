@@ -49,7 +49,7 @@ $(document).ready(function() {
     var minimumDate = dayjs(new Date(2020, 0, 1));
     var maximumDate = minimumDate.add(1, "year");
     var rules = {
-        necs_agreedsessionperweek: "required",
+        necs_agreedsessionperweek: { required: true, max: 9 },
         necs_howagreedsessionschanged: "required",
         necs_agreedsessionschangedate_date_input: "required",
         necs_minimum2sessionsperweek: "required"
