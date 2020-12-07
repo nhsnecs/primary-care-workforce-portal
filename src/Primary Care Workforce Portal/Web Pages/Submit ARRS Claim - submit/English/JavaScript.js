@@ -46,13 +46,10 @@ $(document).ready(function () {
 // Declaration -> enable/disable submit
     var submitButton = $("#InsertButton");
     var enableDisableSubmitButton = function () {
-        var agreed = $("#necs_isdeclarationconfirmed_1").is(":checked");
         var confirmed = $("#confirm-yes").prop("checked");
-        submitButton.attr("disabled", !(agreed && confirmed));
+        submitButton.attr("disabled", !confirmed);
     };
-    $("#necs_isdeclarationconfirmed_0, #necs_isdeclarationconfirmed_1").click(function () {
-        enableDisableSubmitButton();
-    });
+    $("#necs_isdeclarationconfirmed_1").closest("tr").hide();
 
 // Move declaration before insert button
     $("#confirmation-container").prependTo("div.actions");
@@ -62,6 +59,12 @@ $(document).ready(function () {
 
 // Confirm declaration sets enabled
     $("#confirm-yes").change(function () {
+        var confirmed = $("#confirm-yes").prop("checked");
+        if (confirmed) {
+            $("#necs_isdeclarationconfirmed_1").prop("checked", true);
+        } else {
+            $("#necs_isdeclarationconfirmed_0").prop("checked", true);
+        }
         enableDisableSubmitButton();
     });
     enableDisableSubmitButton();
