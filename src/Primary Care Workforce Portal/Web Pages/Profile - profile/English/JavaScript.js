@@ -4,8 +4,12 @@ $(document).ready(function () {
     $("#necs_profession").attr("title", "Select your profession / organisational role");
 
 // Styling
-    $("#address1_line1, #address1_city, #address1_county")
+    $("#firstname, #lastname, #jobtitle, #address1_line1, #address1_city, #address1_county")
         .addClass("nhsuk-input--width-20");
+
+    $("#jobtitle").addClass("nhsuk-input--width-50");
+
+    $("#necs_profession").parent().addClass("nhsuk-input--width-20");
 
     $("#mobilephone, #address1_telephone1, #address1_postalcode")
         .addClass("nhsuk-input--width-10");
@@ -15,18 +19,22 @@ $(document).ready(function () {
 
 // Profession selection -> show/hide ODS lookups
     var showHideODS = function () {
+        var legend = $("table[data-name='section_address']").closest("fieldset").find("legend");
         var pcn = $("#necs_profession option:selected").text() == "PCN";
         var ccg = $("#necs_profession option:selected").text() == "CCG";
         if (pcn) {
+            legend.text("Address");
             $("#necs_practiceodscode").closest("fieldset").show();
             $("#necs_practiceodscode").closest("fieldset").find("legend").text("Primary practice (Payee)");
             $("#necs_pcnodscode").closest("fieldset").show();
             $("#necs_ccgodscode").closest("fieldset").show();
         } else if (ccg) {
+            legend.text("Address");
             $("#necs_practiceodscode").closest("fieldset").hide();
             $("#necs_pcnodscode").closest("fieldset").hide();
             $("#necs_ccgodscode").closest("fieldset").show();
         } else {
+            legend.text("Home Address");
             $("#necs_practiceodscode").closest("fieldset").show();
             $("#necs_practiceodscode").closest("fieldset").find("legend").text("Practice");
             $("#necs_pcnodscode").closest("fieldset").hide();

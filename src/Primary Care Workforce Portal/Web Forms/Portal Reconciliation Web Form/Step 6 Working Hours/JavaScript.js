@@ -5,8 +5,7 @@ $(document).ready(function() {
     $("#confirmation-container").hide();
 
 // Styling
-    $("#necs_howagreedsessionschanged").parent().addClass("nhsuk-input--width-10");
-    $("#necs_agreedsessionperweek").attr("type", "number").addClass("nhsuk-input--width-5");
+    $("#necs_numberofhoursperweek").attr("type", "number").addClass("nhsuk-input--width-5");
     $("#necs_minimum2sessionsperweek").parent().addClass("nhsuk-input--width-10");
 
 // Reset values (when no selected)
@@ -50,10 +49,7 @@ $(document).ready(function() {
     var maximumDate = minimumDate.add(1, "year");
     var rules = {
         changed: "required",
-        necs_agreedsessionperweek: { required: true, max: 9 },
-        necs_howagreedsessionschanged: "required",
-        necs_agreedsessionschangedate_date_input: "required",
-        necs_minimum2sessionsperweek: "required"
+        necs_numberofhoursperweek: { required: true, number: true, max: 40 }
     };
     var messages = {
     };

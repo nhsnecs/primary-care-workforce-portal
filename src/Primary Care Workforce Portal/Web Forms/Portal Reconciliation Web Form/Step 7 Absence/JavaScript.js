@@ -14,7 +14,7 @@ $(document).ready(function() {
 
 // Setup Yes/No
     $("table[role='presentation']").parent().prepend('<span class="boolean-radio"><input id="no" type="radio" name="changed" value="no" required="required"><label for="no" class="radio-label">No</label><input id="yes" type="radio" name="changed" value="yes" required="required"><label for="yes" class="radio-label">Yes</label></span>');
-    $("table[role='presentation']").parent().prepend('<span class="nhsuk-hint">Are you planning to or have taken a prolonged period of absence from work, for example a sabbatical? This does not include annual leave, maternity / paternity / adoption / parental leave and/or long-term sickness.</span>');
+    $("table[role='presentation']").parent().prepend('<span class="nhsuk-hint">Have you had any prolonged periods of absence? (excluding; Annual leave Maternity/ Paternity/Adoption leave and long term sickness) </span>');
     $("#yes").click(function () {
         $("table[role='presentation']").show();
         $("#necs_prolongerperiodsofabsence").val("348730000");

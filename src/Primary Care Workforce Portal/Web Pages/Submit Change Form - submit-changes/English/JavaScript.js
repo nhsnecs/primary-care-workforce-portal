@@ -230,7 +230,7 @@ $("table[role='presentation']").each(function(index) {
         description = "Have there been any changes to your practice GMS, PMS or APMS contract?";
         break;
     case 5:
-        description = "Have there been any changes to your agreed number of working sessions that we hold on record for you?";
+        description = "Have there been any changes to your agreed number of working sessions that we hold on record for you? Note: A session is of no less than 4 hours 10 minutes duration and 9 sessions equates to 1 FTE";
         break;
     case 6:
         description = "Are you planning or have taken a prolonged period of absence? (excluding: annual leave maternity / paternity / adoption leave and long term sickness) please provide details on the reason";
@@ -287,7 +287,7 @@ var rules = {
     necs_mobileno: { required: false },
     necs_email: { required: false },
     
-    necs_revisedagreedsessionperweek: { digits: true, max: 9 },
+    necs_revisedagreedsessionperweek: { required: true, digits: true, max: 9 },
 
     necs_extensionenddate_date_input: { required: false },
     necs_extensionchangedate_date_input: { required: function () { return $("#necs_extensionenddate_date_input").val() != ""; } },

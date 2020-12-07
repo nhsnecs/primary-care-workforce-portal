@@ -31,15 +31,15 @@ $(document).ready(function() {
 
 // Hide table
     $("table[role='presentation']").parent().prepend('<span class="boolean-radio"><input id="no" type="radio" name="changed" value="no" required="required"><label for="no" class="radio-label">No</label><input id="yes" type="radio" name="changed" value="yes" required="required"><label for="yes" class="radio-label">Yes</label></span>');
-    $("table[role='presentation']").parent().prepend('<span class="nhsuk-hint">Have you have continued to work as a partner but no longer hold an equity share?</span>');
+    $("table[role='presentation']").parent().prepend('<span class="nhsuk-hint">Have you continued to work as an equity share partner?</span>');
 
 // Yes/No handlers
     $("#yes").click(function () {
-        $("table[role='presentation']").show();
+        $("table[role='presentation']").hide();
         $("#necs_continuedequitysharepartner").val("348730000");
     });
     $("#no").click(function () {
-        $("table[role='presentation']").hide();
+        $("table[role='presentation']").show();
         $("#necs_continuedequitysharepartner").val("348730001");
         clearAllFields();
     });
@@ -49,11 +49,11 @@ $(document).ready(function() {
     switch (selectedValue) {
         case "348730000": // Yes
             $("#yes").attr("checked", "checked");
-            $("table[role='presentation']").show();
+            $("table[role='presentation']").hide();
             break;
         case "348730001": // No
             $("#no").attr("checked", "checked");
-            $("table[role='presentation']").hide();
+            $("table[role='presentation']").show();
             break;
         default: // Not set yet
             $("table[role='presentation']").hide();
