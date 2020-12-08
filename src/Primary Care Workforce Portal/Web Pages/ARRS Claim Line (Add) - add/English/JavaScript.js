@@ -1,5 +1,19 @@
 $(document).ready(function () {
 
+// Styling / Input types
+    $("#necs_monthlysalary, #necs_monthlyemployersni, #necs_monthlyemployerspension, #necs_monthlyfees, #necs_hoursworkedperweek")
+        .prop("type", "number");
+
+// Start & end date tooltips
+    var addTooltipToElement = function (id, title) {
+        $("#" + id).attr("data-toggle", "tooltip");
+        $("#" + id).attr("data-placement", "right");
+        $("#" + id).attr("title", title);
+    };
+    addTooltipToElement("necs_startedon_label", "You must populate the start date of the employee");
+    addTooltipToElement("necs_lefton_label", "If there is no change in-month, please leave this field blank");
+    $('[data-toggle="tooltip"]').tooltip();
+
 // Add guidance for meets training requirements
     var guidance = $("<p class='guidance'>Where a PCN employs or engages a Clinical Pharmacist under the Additional Roles Reimbursement Scheme, the PCN must ensure that the Clinical Pharmacist is enrolled in, or has qualified from, an approved 18-month training pathway or equivalent that equips the Clinical Pharmacist to:<ol><li>be able to practice and prescribe safely and effectively in a primary care setting (for example, the CPPE Clinical Pharmacist training pathways 74,75);</li><span class='guidance-and'>and</span><li>deliver the key responsibilities set out in the job description</li></ol></p>");
     $("#necs_meetstrainingrequirements").parent().prepend(guidance);
@@ -39,7 +53,18 @@ $(document).ready(function () {
     });
 
 // Setup Validation
-    var rules = { necs_employeeid: null, necs_lefton_date_input: null, necs_totalcost: null, necs_maxreimbursement: null, necs_maxadjustedreimbursement: null };
+    var rules = {
+        necs_monthlysalary: { required: true, number: true, max: 10000, min: 0 },
+        necs_monthlyemployersni: { required: true, number: true, max: 1000, min: 0 },
+        necs_monthlyemployerspension: { required: true, number: true, max: 10000, min: 0 },
+        necs_monthlyfees: { required: true, number: true, max: 1000, min: 0 },
+        necs_hoursworkedperweek: { required: true, number: true, max: 40, min: 1 },
+        necs_employeeid: null,
+        necs_lefton_date_input: null,
+        necs_totalcost: null,
+        necs_maxreimbursement: null,
+        necs_maxadjustedreimbursement: null
+        };
     setupValidationForForm(rules);
 
 });
