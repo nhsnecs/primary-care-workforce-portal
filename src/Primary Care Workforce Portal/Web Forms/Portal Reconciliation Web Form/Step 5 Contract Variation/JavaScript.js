@@ -51,7 +51,7 @@ $(document).ready(function() {
 
 // Add yes/no
     $("table[role='presentation']").parent().prepend('<span class="boolean-radio"><input id="no" type="radio" name="changed" value="no" required="required"><label for="no" class="radio-label">No</label><input id="yes" type="radio" name="changed" value="yes" required="required"><label for="yes" class="radio-label">Yes</label></span>');
-    $("table[role='presentation']").parent().prepend('<span class="nhsuk-hint">Have there been any changes to your practice GMS, PMS or APMS contract?</span>');
+    $("table[role='presentation']").parent().prepend('<span class="nhsuk-hint">Have there been any changes to your practice GMS, PMS or APMS contract since your application?</span>');
     $("#yes").click(function () {
         $("table[role='presentation']").show();
         $("#necs_changestopracticecontract").val("348730000");

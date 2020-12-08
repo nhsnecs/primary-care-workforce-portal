@@ -7,6 +7,7 @@ $(document).ready(function() {
 // Styling
     $("#necs_numberofhoursperweek").attr("type", "number").addClass("nhsuk-input--width-5");
     $("#necs_minimum2sessionsperweek").parent().addClass("nhsuk-input--width-10");
+    $("#necs_howagreedsessionschanged").parent().addClass("nhsuk-input--width-10");
 
 // Reset values (when no selected)
     var clearAllFields = function () {
@@ -14,6 +15,7 @@ $(document).ready(function() {
         $("#necs_agreedsessionperweek").val(null);
         $("#necs_minimum2sessionsperweek").val(null);
         $("#necs_agreedsessionschangedate_date_input").val(null);
+        $("#necs_numberofhoursperweek").val(null);
     };
 
 // Setup Yes/No
