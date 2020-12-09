@@ -238,3 +238,8 @@ tr.nhsuk-form-group--error td {
     font-size: 16px !important;
     max-width: 200px !important;
 }
+
+.tooltip-inner {
+    max-width: 350px;
+    width: 350px; 
+}

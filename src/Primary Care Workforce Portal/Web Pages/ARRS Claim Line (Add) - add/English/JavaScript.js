@@ -12,6 +12,8 @@ $(document).ready(function () {
     };
     addTooltipToElement("necs_startedon_label", "You must populate the start date of the employee");
     addTooltipToElement("necs_lefton_label", "If there is no change in-month, please leave this field blank");
+    addTooltipToElement("necs_maxreimbursement_label", "This shows the maximum reimbursement amount this month for each staff member. It is the lower of actual costs or maximum reimbursable. Maximum reimbursable amount is adjusted for start/end dates and working part-time (under 37.5 hours).");
+    addTooltipToElement("necs_maxadjustedreimbursement_label", "Maximum Monthly Reimbursement for PCN per WTE for full month");
     $('[data-toggle="tooltip"]').tooltip();
 
 // Add guidance for meets training requirements
