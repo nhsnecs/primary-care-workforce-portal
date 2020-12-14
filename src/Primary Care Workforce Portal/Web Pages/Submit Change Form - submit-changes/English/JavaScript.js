@@ -80,8 +80,13 @@ var showRelevantFields = function (selectedOption) {
         case "348730001": // I have left my partnership role
             $("#necs_datewhenleftpartnershiprole_datepicker_description").closest("tr").show();
             break;
-        case "348730002": // I have left my role due to ill health
+        case "348730002": // I have retired
             $("#necs_datewhenleftpartnershiprole_datepicker_description").closest("tr").show();
+            $("#necs_datewhenleftpartnershiprole_label").text("Date left");
+            break;
+        case "348730004": // I have left my role due to ill health
+            $("#necs_datewhenleftpartnershiprole_datepicker_description").closest("tr").show();
+            $("#necs_datewhenleftpartnershiprole_label").text("Date left");
             break;
         case "348730003": // Other
             $("#necs_otherpartnershipstatus").closest("tr").show();
@@ -214,29 +219,29 @@ $("table[role='presentation']").each(function(index) {
 
     var description = "";
     switch (index) {
-    case 0:
+    case 0: // Personal details
         description = "Complete this section only if your personal details have changed";
         break;
-    case 1:
+    case 1: // Practice details
         description = "Complete this section only if you have either moved practices but continued in a partnership role, or have left your partnership altogether";
         break;
-    case 2:
-        description = "Please provide details of the changes you wish to make to your probationary period";
+    case 2: // Probationary period
+        description = "Please complete this section if you joined the New to Partnership Payment scheme during your probationary period and need to update any of the details that we hold on record for you in relation to this, for example if your probationary period has been extended or has been completed and you are now a substantive partner.";
         break;
-    case 3:
-        description = "Have you have continued to work as a partner but no longer hold an equity share?";
+    case 3: // Equity share
+        description = "Please complete this section if you have continued to work as a partner but no longer hold an equity share. If you have not continued to work as a partner please complete the Partnership and Practice section.";
         break;
-    case 4:
+    case 4: // Contract change
         description = "Have there been any changes to your practice GMS, PMS or APMS contract?";
         break;
-    case 5:
-        description = "Have there been any changes to your agreed number of working sessions that we hold on record for you? Note: A session is of no less than 4 hours 10 minutes duration and 9 sessions equates to 1 FTE";
+    case 5: // Working sessions
+        description = "Have you undertaken and will you continue to undertake a minimum of 2 clinical sessions a week (other than when on sick leave, annual leave, maternity, paternity, adoption, parental leave)?";
         break;
-    case 6:
-        description = "Are you planning or have taken a prolonged period of absence? (excluding: annual leave maternity / paternity / adoption leave and long term sickness) please provide details on the reason";
+    case 6: // Absence
+        description = "Please complete this section if you are planning or have taken a prolonged period of absence from work, for example a sabbatical. This does not include annual leave, maternity / paternity / adoption / parental leave and/or long-term sickness.";
         break;
-    case 7:
-        description = "If you have any other changes you wish to make, please detail them here";
+    case 7: // Other
+        description = "If you have any other changes you wish to make to your personal or employment details that are not included on the other sections of this form, please document them here:";
         break;
     }
     $(this).parent().prepend('<span class="nhsuk-hint">' + description + '</span>');

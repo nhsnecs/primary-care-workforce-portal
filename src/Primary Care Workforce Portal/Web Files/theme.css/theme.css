@@ -183,10 +183,6 @@ td.boolean-radio-cell {
     display: none;
 }
 
-a[href='/Account/Login/ForgotPassword'] {
-    display: none;
-}
-
 td, th {
     font-size: 16px !important;
     font-size: 1rem !important;

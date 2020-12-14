@@ -1,5 +1,10 @@
 $(document).ready(function () {
 
+// 
+    if ($("#MessagePanel.alert-success").length > 0) {
+        $("#MessagePanel.alert-success").find("span").html("Submission completed successfully. <strong>Please note:</strong> your practice manager will need to log in to the portal to approve your application.");
+    }
+
 // SiteImprove - Form has no submit button
     $("#InsertButton").prop("type", "submit");
 

@@ -66,6 +66,11 @@ var showRelevantFields = function (selectedOption) {
             break;
         case "348730002": // I have left my role due to ill health
             $("#necs_datewhenleftpartnershiprole_datepicker_description").closest("tr").show();
+            $("#necs_datewhenleftpartnershiprole_label").text("Date left");
+            break;
+        case "348730004": // I have retired
+            $("#necs_datewhenleftpartnershiprole_datepicker_description").closest("tr").show();
+            $("#necs_datewhenleftpartnershiprole_label").text("Date left");
             break;
         case "348730003": // Other
             $("#necs_otherpartnershipstatus").closest("tr").show();
