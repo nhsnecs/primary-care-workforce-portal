@@ -102,8 +102,12 @@ var showRelevantFields = function (selectedOption) {
     });
 
 // Move attach file into changes to contract section
-    var attachFile = $("#AttachFile").closest("div.tr").detach();
-    $("table[data-name='section_practice_contract']").parent().append(attachFile);
+    // var attachFile = $("#AttachFile").closest("div.tr").detach();
+    //attachFile.insertAfter($("table[data-name='section_agreed_sessions']").closest("fieldset"));
+
+// Add guidance for uploading evidence
+    $("table[data-name='section_practice_contract']").closest("fieldset").append("<label class='nhsuk-label'>If your contract has changed, please upload your new contract including any variations or standard contract with a 2L Bolt on.</label>");
+    $("table[data-name='section_agreed_sessions']").closest("fieldset").append("<label class='nhsuk-label'>If there have been changes to your working sessions please upload a headed letter from your practice confirming the change in the number of sessions you are delivering.</label>");
 
 // Equity share -> Working capacity other
     var showEquityShareOther = function (value) {
@@ -122,14 +126,12 @@ var showRelevantFields = function (selectedOption) {
     var showContractChangedElements = function () {
         var changes = $("#necs_contracttypechanged").val();
         if (changes == "348730000") {
-            $("#AttachFile").closest(".tr").show();
             $("#necs_newcontracttype").closest("tr").show();
             $("#necs_newcontractenddate_date_input").closest("tr").show();
             $("#necs_contractchangedate_date_input").closest("tr").show();
             $("#necs_extensionenddate_date_input").closest("tr").show();
             $("#necs_extensionchangedate_date_input").closest("tr").show();
         } else {
-            $("#AttachFile").closest(".tr").hide();
             $("#necs_newcontracttype").closest("tr").hide();
             $("#necs_newcontractenddate_date_input").closest("tr").hide();
             $("#necs_contractchangedate_date_input").closest("tr").hide();
@@ -143,6 +145,7 @@ var showRelevantFields = function (selectedOption) {
     });
 
 // Turn sections into dropdown options
+    $("#AttachFile").closest(".tr").hide();
     var sections = [];
     var options = "";
     $("fieldset:not(#confirmation-fieldset)").each(function(index) {
@@ -154,6 +157,12 @@ var showRelevantFields = function (selectedOption) {
         }
     });
     $("#confirmation-container").hide();
+
+// Are files allowed to be attached?
+    var fileAttachmentRequired = function () {
+        var selectedSections = $("#sections").val();
+        return (selectedSections.includes("Changes in Practice Contract")) || (selectedSections.includes("Changes in Agreed Sessions"));
+    };
 
 // Section handling
     var selectSection = $("<legend class='nhsuk-fieldset__legend nhsuk-fieldset__legend--l'>Select what's changed</legend><select id='sections' name='sections' class='form-control picklist nhsuk-select' multiple='multiple'>" + options + "</select><br/>");
@@ -169,6 +178,11 @@ var showRelevantFields = function (selectedOption) {
             $("#InsertButton").attr("disabled", true);
         } else {
             $("#confirmation-container").show();
+        }
+        if (fileAttachmentRequired()) {
+            $("#AttachFile").closest(".tr").show();
+        } else {
+            $("#AttachFile").closest(".tr").hide();
         }
         for (var index = 0; index < selectedTitles.length; index++) {
             var selectedTitle = selectedTitles[index];
@@ -235,7 +249,7 @@ $("table[role='presentation']").each(function(index) {
         description = "Have there been any changes to your practice GMS, PMS or APMS contract?";
         break;
     case 5: // Working sessions
-        description = "Have you undertaken and will you continue to undertake a minimum of 2 clinical sessions a week (other than when on sick leave, annual leave, maternity, paternity, adoption, parental leave)?";
+        description = "Have there been any changes to your agreed number of working sessions that we hold on record for you? Note: A session is of no less than 4 hours 10 minutes duration and 9 sessions equates to 1 FTE";
         break;
     case 6: // Absence
         description = "Please complete this section if you are planning or have taken a prolonged period of absence from work, for example a sabbatical. This does not include annual leave, maternity / paternity / adoption / parental leave and/or long-term sickness.";
@@ -279,6 +293,7 @@ var maximumDate = minimumDate.add(1, "year");
 var contractHasChanged = function () {
     return $("#necs_contracttypechanged option:selected").val() == "348730000";
 };
+
 var rules = {
     sections: "required",
     necs_firstnames: { required: false },
@@ -303,7 +318,7 @@ var rules = {
     necs_datewhenleftpartnershiprole_date_input: { required: true, minimumDate: minimumDate, maximumDate: maximumDate },
     necs_absentfrom_date_input: { required: true, minimumDate: minimumDate, maximumDate: getFromDateMaximum },
     necs_absentto_date_input: { required: true, minimumDate: getToDateMinimum, maximumDate: maximumDate },
-    AttachFile: { required: function () { return $("#sections option:selected").text() == "Changes in practice contract"; } }
+    AttachFile: { required: fileAttachmentRequired }
 };
 var messages = {
     necs_datewhenleftpartnershiprole_date_input: {
